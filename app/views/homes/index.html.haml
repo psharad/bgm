@@ -1,0 +1,17 @@
+- content_for :head do
+  %link{:href => "/images/connectingsexes-logo.png", :rel => "apple-touch-icon-precomposed"}
+  %link{:href => "/stylesheets/add2home.css", :rel => "stylesheet"}
+  %script{:src => "/javascripts/add2home.js", :type => "application/javascript"}
+  
+#home
+  - if mobile_device?
+    .logo= image_tag 'connectingsexes-home-logo.png'
+    / .desc= image_tag 'groupdate.png'
+    - tag_line = TagLine.find(:first)
+    .desc= tag_line.name
+    .notice= clear_notice(notice)
+    .login= link_to "Log in", login_path, :class => 'black-button', :style => 'padding: 10px 72px'
+    .login= link_to "Join", new_user_path, :class => 'black-button', :style => 'padding: 10px 74px'
+    .join= link_to "About", about_homes_path, :class => 'black-button'
+    .join= link_to 'Local Offers', local_offers_homes_path, :class => 'black-button', :style => 'padding: 10px 55px'
+

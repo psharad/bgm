@@ -1,0 +1,37 @@
+#content
+  - unless mobile_device?
+    #quad
+  - if @group.photo_file_name.nil?
+    .title Upload Your Photo
+    .instruct Please select a photo.
+    %br.clear
+  - else
+    .title Photo Preview 
+    .upload_photo
+      .cred
+        %br.clear
+        = image_tag @group.photo.url(:small), :alt => 'group photo', :disabled => false
+        %br.clear
+  .upload_photo    
+    %br
+    - form_for @group, :url => save_uploaded_photo_group_url(@group), :html => {:multipart => true} do |f|
+      .cred
+        = link_to 'Grab from Facebook', choose_album_group_url, :class => 'black-button', :style => "padding: 10px 33px;"
+        %br.clear
+        %br.clear
+      - if !mobile_device? 
+        .cred
+          .field-label Select an image on your computer.
+          = f.file_field :photo, {:class => 'required'}
+        %br.clear
+        .cred
+          = f.submit 'Upload', :id => 'update', :disabled => true
+      - else
+        .cred
+          .field-label If you don't have a Facebook account tap 'next' to complete the registration then add a photo from your PC.
+      .cred
+        %br
+        %table{:style => "margin: auto;"}
+          %tr
+            %td= link_to 'Back', group_preferences_url(current_user.groups.current_group), :class => 'small-black-button', :id => 'next'
+            %td= link_to 'Next', congrats_users_url, :class => 'small-black-button', :id => 'next'

@@ -1,0 +1,52 @@
+.title Group Leader Profile
+.notice= clear_notice(notice)
+
+.instruct All fields are required.
+.error= error_messages_for :user, :header_message => nil, :message => ""
+.cred
+  .field-label Email
+  = f.text_field :email, :class => 'required text_field'
+
+.cred
+  .field-label Sex
+  = f.select :sex, ['Male', 'Female'], {:prompt => 'Select'}, {:class => 'required'}
+
+.cred
+  .field-label Age
+  = f.select :age, 18..99, {:prompt => 'Select'}, {:class => 'required'}
+
+.cred
+  .field-label Height
+  = f.select :height_id, Height.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+.cred
+  .field-label Build
+  = f.select :built_id, Built.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+.cred
+  .field-label Ethnicity
+  = f.select :ethnicity_id, Ethnicity.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+/ .cred
+/   .field-label Primary Language
+/   = f.select :language_id, Language.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+.cred
+  .field-label Education
+  = f.select :education_id, Education.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+/ .cred
+/   .field-label University
+/   = f.text_field :university, :class => 'text_field'
+
+.cred
+  Currently in College?
+  %br
+  = f.radio_button :in_college, true
+  Yes
+  = f.radio_button :in_college, false
+  No
+
+.cred
+  .field-label Occupation
+  = f.select :occupation_id, Occupation.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}

@@ -1,0 +1,53 @@
+%tr
+  %td{:align => "center", :style => "padding: 20px 0px;"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "759"}
+      %tr
+        %td{:background => "/images/activity.jpg", :height => "423", :style => "background-repeat:no-repeat;", :valign => "top", :width => "417"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td{:width => "25"}  
+              %td
+                - form_tag({:action => :create_preferences}) do
+                  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                    %tr
+                      %td{:height => "19"}  
+                    %tr
+                      %td.text3{:align => "left", :style => "font-size:17px; line-height:18px;"}
+                        %span.style1 All fields are required.
+                    %tr
+                      %td{:height => "35"}
+                    %tr
+                      %td{:align => "left"}
+                        = select_tag 'preference[interest_id]', options_for_select([['Activity our group is interested in', nil]] + Interest.all(:order => 'sort_id ASC, text ASC').collect {|p| [p.text, p.id]}, @preference['interest_id']), :onblur => "this.value=!this.value?'Activity our group is interested in':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Activity our group is interested in", :class => 'required'
+                    %tr
+                      %td{:height => "47"}
+                    %tr
+                      %td{:align => "left"}
+                        = select_tag 'preference[day_id]', options_for_select([['Day of Week our Group is Free', nil]] + Day.all.collect {|p| [ p.text, p.id ]}, @preference['day_id']), :onblur => "this.value=!this.value?'Day of Week our Group is Free':this.value;", :onfocus => "this.select()", :style => "border:none; width:365px; height:25px; background:none;", :type => "text", :value => "Day of Week our Group is Free", :class => 'required'
+                    %tr
+                      %td{:height => "45"}
+                    %tr
+                      %td{:align => "left"}
+                        = text_area_tag 'preference[description]', @preference['description'], :onblur => "this.value=!this.value?'Describe your ideal group':this.value;",:onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:80px; background:none;color:#FFF", :type => "text", :value => "Describe your ideal group", :class => 'required'
+                    %tr
+                      %td{:height => "15"}
+                    %tr
+                      %td{:align => "left"}
+                        - if session[:reg_flow].eql?("facebook")
+                          = hidden_field_tag 'from_facebook', true  
+                    %tr
+                      %td{:height => "8"}
+                    %tr
+                      %td{:align => "left"}  
+                        = submit_tag 'Continue', :id => 'preference_submit', :disabled => true,:style=>"margin-left:100px;"     
+                    %tr
+                      %td{:height => "5"}
+                    %tr
+                      %td{:align => "left"}        
+                        = submit_tag 'Back',:style=>"margin-left:100px;"    
+                    %tr
+                      %td{:height => "15"}
+                    %tr
+                      %td{:align => "left"}        
+                        - if mobile_device?
+                          #spacer

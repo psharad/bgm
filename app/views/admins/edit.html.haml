@@ -1,0 +1,6 @@
+%h2= current_admin.id == @admin.id ? 'My Account' : 'Blogger Account'
+%p Please Enter required.
+%p= clear_notice(notice)
+
+- form_for @admin, :html => { :multipart => true } do |f|
+  = render 'form', :f => f

@@ -1,0 +1,13 @@
+#post
+  #left.grid_8
+    .title=h @local_offer.title
+    .post_image= image_tag(@local_offer.image.url(:medium))
+    .body=h @local_offer.description.html_safe
+  
+  #right.grid_4
+    #archive
+      %b Local Offers
+      %ul
+        - @local_offers.each do |local_offer|
+          %li= link_to(local_offer.title, main_local_offer_path(local_offer.id), :id => 'sub-box')
+/ = link_to "Back", :back, :class => 'med-black-button'

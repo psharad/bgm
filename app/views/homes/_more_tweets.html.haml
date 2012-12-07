@@ -1,0 +1,9 @@
+- for tweet in @tweets
+  - if tweet.retweeted_status.present?
+    .image= image_tag(tweet.retweeted_status.user.profile_image_url, :size => "36x36")
+  - else
+    .image= image_tag(tweet.user.profile_image_url, :size => "36x36") 
+  .text= display_content_with_links(tweet.text)
+  .time_tweeted
+    = time_ago_in_words(tweet.created_at) + ' ago'
+  %hr.thin

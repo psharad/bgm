@@ -1,0 +1,5 @@
+.normal
+  - admin = Admin.find_by_username('admin')
+  %div{:style => 'float:left; margin:0 10px 0 0'}
+    = image_tag(admin.image.url(:small))
+  = admin.about

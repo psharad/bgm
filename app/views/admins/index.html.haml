@@ -1,0 +1,11 @@
+- if current_admin
+  #double
+  #double
+  = render :partial => 'shared/admin_nav_bar'
+  = yield
+  
+- else
+  #double
+  #admin.grid_12
+    = clear_notice(notice)
+    = render :partial => 'admin_sessions/form'

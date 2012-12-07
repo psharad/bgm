@@ -1,0 +1,17 @@
+- for blogger in @bloggers
+  - post = blogger_latest_post(blogger.username)
+  - unless post.nil?
+    .blogger
+      / .header= image_tag("blogger-#{blogger}.png")
+      .header= blogger.name
+      .blog
+        .image.left= link_to(image_tag(post.image.url(:medium), :width => 142), post_path(post.friendly_id), :class => 'read_more_post')
+        .synopsis.left
+          .title= link_to(truncate(post.title, :length => 40, :omission => '...'), post_path(post.friendly_id), :class => 'read_more_post')
+          =# truncate(sanitize(post.body.gsub(/&nbsp;/i," "), :tags => %w(p)), :length => 170, :omission => '...')
+          -# debugger
+          .syntext= truncate_html (post.body.gsub(/(&nbsp\;|"font-size: .+")/i," "), :length => 170, :omission => '...')
+          =# truncate_html(post.body.gsub(/(&nbsp;|<p>|<\/p>|<span .+">|<\/span>)/i," "), :length => 50)
+          .more
+            = link_to('Read More', post_path(post.friendly_id), :class => 'read_more_post')
+        .clear

@@ -1,0 +1,24 @@
+- form_for [@group, @preference], :url => group_preferences_url(@group), :html => {:method => :post} do |f|
+  / = f.hidden_field :user_id, :value => current_user.id
+
+  /= error_messages_for :group, :header_message => "Error:", :message => ""
+
+  .cred 
+    .field-label Activity our group is interested in
+    = f.select :interest_id, Interest.all(:order => 'sort_id ASC, text ASC').collect {|p| [p.text, p.id] }, {:prompt => 'Select'}
+
+  .cred
+    .field-label Day of Week our Group is Free
+    = f.select :day_id, Day.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    .field-label Describe your ideal group
+    = f.text_area :description
+    
+  %br
+  = f.submit 'Continue', :disabled => true
+  %br
+  %br
+  = link_to 'Back', new_group_member_url(@group, rbtokenizer.merge(:mpos => @group.size.pred)), :class => 'black-button', :style => "padding: 10px 71px"
+  - if mobile_device?
+    #spacer

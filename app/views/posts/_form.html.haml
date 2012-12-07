@@ -1,0 +1,29 @@
+- form_for @post, :html => { :multipart => true } do |f|
+  = f.error_messages
+  .cred
+    .field-label Title
+    = f.text_field :title
+    = f.hidden_field :author, :value => current_admin.username
+    = f.hidden_field :blogger_id, :value => current_admin.id
+  .cred
+    .field-label Blog
+    = f.text_area :body, :class => 'mceEditor'
+  - if self.action_name == 'edit'  
+    .cred
+      .field-label Current Image
+      = link_to image_tag(@post.image.url(:small)), @post.image.url(:large), :id =>"image"
+  .cred
+    .field-label Upload an Image
+    = f.file_field :image
+  .cred
+    .field-label Slug
+    = f.text_field :post_slug
+  .cred
+    .field-label Blog URL
+    = text_field_tag 'blog_url', request.url[0..-6], :readonly => true, :style => 'width:500px'
+  .cred
+    #single
+    = f.submit 'Save', :name => 'save_button'
+    = f.submit 'Submit', :name => 'submit_button'
+    = link_to 'Back', posts_url, :class => 'black-button'
+

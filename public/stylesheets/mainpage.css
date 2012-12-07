@@ -1,0 +1,374 @@
+#main {
+  background: url("/images/main/main_bg.png") no-repeat scroll 10px -25px transparent; }
+
+#top_main {
+  position: relative;
+  padding: 10px 0 20px 0;
+  font-family: Arial;
+  font-size: 14px; }
+  #top_main .desc {
+    font-size: 20px; }
+  #top_main a {
+    color: white;
+    text-decoration: none; }
+  #top_main #social_links {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    z-index: 1000; }
+  #top_main #tag_line {
+    position: absolute;
+    right: 180px;
+    top: 42px;
+    font-size: 17px;
+    color: white;
+    letter-spacing: 1px; }
+
+#top_nav {
+  background: url(/images/main/top_nav_bg.png) repeat-x;
+  height: 33px;
+  width: 937px;
+  color: white;
+  font-family: Arial;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  left: 23px; }
+  #top_nav a {
+    color: white;
+    text-decoration: none; }
+  #top_nav ul.nav {
+    line-height: 2px;
+    margin: 14px 0 0 0;
+    padding: 0;
+    width: 400px; }
+  #top_nav ul.nav li {
+    display: inline;
+    margin: 8px;
+    font-size: 14px;
+    font-weight: normal; }
+
+#login_main {
+  background: url(/images/main/login_main_font.png) no-repeat scroll 0 -40px transparent;
+  width: 350px;
+  color: black;
+  padding: 130px 0px 25px 40px; }
+
+#forum {
+  position: relative;
+  left: 68px;
+  width: 436px;
+  background: url(/images/arrow.png) no-repeat;
+  background-position: 16px 2px;
+  cursor: pointer;
+  cursor: hand; }
+
+#forum div {
+  float: left;
+  margin: 8px 8px; }
+
+#forum ul {
+  margin: 0 0 0 -15px;
+  padding: 0; }
+
+#forum ul li {
+  display: inline;
+  margin: 0 8px; }
+
+#goto_label {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  color: #f2ef4c; }
+
+#menu_1 {
+  font-size: 14px;
+  width: 100%;
+  text-align: center; }
+
+#menu_2 {
+  display: none;
+  font-size: 14px;
+  width: 100%;
+  text-align: center; }
+
+.bloggers {
+  background: white;
+  color: black;
+  font-size: 12px;
+  width: 418px;
+  height: 755px;
+  position: relative;
+  left: 2px; }
+  .bloggers .blogger {
+    height: 188px; }
+    .bloggers .blogger .header {
+      font-size: 18px;
+      font-family: Arial;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px 0 10px 15px;
+      color: white;
+      background: url("/images/blogger-title-bg.png") repeat-x scroll 0 0 transparent; }
+    .bloggers .blogger .left {
+      float: left; }
+    .bloggers .blogger .blog {
+      padding: 10px; }
+      .bloggers .blogger .blog .image {
+        overflow: hidden; }
+      .bloggers .blogger .blog .synopsis {
+        position: relative;
+        height: 130px;
+        width: 245px;
+        padding: 0 0px 0 10px; }
+        .bloggers .blogger .blog .synopsis .title a {
+          text-decoration: none;
+          font-size: 16px;
+          color: blue; }
+        .bloggers .blogger .blog .synopsis .title a:visited {
+          text-decoration: none;
+          color: blue; }
+        .bloggers .blogger .blog .synopsis p {
+          margin-top: 1;
+          margin-bottom: 0; }
+        .bloggers .blogger .blog .synopsis .more {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          text-align: right; }
+          .bloggers .blogger .blog .synopsis .more a {
+            text-decoration: none;
+            color: blue; }
+          .bloggers .blogger .blog .synopsis .more a:visited {
+            text-decoration: none;
+            color: blue; }
+        .bloggers .blogger .blog .synopsis .syntext {
+          font-size: 12px;
+          height: 85px;
+          overflow: hidden; }
+
+.local_offers_section {
+  float: left; }
+
+.local_offers_scroll {
+  position: relative;
+  overflow: scroll;
+  height: 755px;
+  width: 418px; }
+
+.local_offers_wrapper {
+  float: left;
+  width: 380px;
+  height: 78px;
+  margin: 7px 0 0 10px; }
+
+.local_offers_crop {
+  float: left;
+  width: 105px; }
+
+.local_offers_text {
+  float: right;
+  width: 265px;
+  height: 60px;
+  overflow: hidden;
+  margin: 0 0 0 10px;
+  font-size: 14px;
+  line-height: 19px; }
+
+.local_offers_email {
+  float: right;
+  width: 265px;
+  height: 18px;
+  margin: 0 0 0 10px;
+  font-size: 14px;
+  line-height: 19px; }
+
+.local_offers_text p {
+  margin: 0;
+  padding: 0; }
+
+.local_offer_link {
+  color: blue; }
+
+.local_offer_link:hover {
+  color: blue; }
+
+#enter_email {
+  color: black;
+  text-align: center; }
+
+#enter_email input#local_offer_email_recipient {
+  border: 1px solid black;
+  width: 200px; }
+
+#twitter_photo_head {
+  background: url("/images/follow_and_photo_bg.png") repeat-x scroll 0 0 transparent;
+  width: 515px;
+  height: 35px;
+  position: relative;
+  top: -2px;
+  left: 23px; }
+  #twitter_photo_head a img {
+    border: none; }
+  #twitter_photo_head .left {
+    text-align: center; }
+
+#twitter_main {
+  background: white;
+  padding: 5px 15px 15px 5px;
+  width: 265px;
+  height: 290px;
+  position: relative;
+  top: -5px;
+  left: 23px;
+  color: black;
+  overflow: scroll; }
+  #twitter_main .text {
+    display: inline; }
+  #twitter_main .thin {
+    height: 1px;
+    border: 0;
+    background-color: #cccccc; }
+  #twitter_main .links .cred {
+    padding: 0 0 0 50px; }
+  #twitter_main #title {
+    color: #444444;
+    text-transform: none;
+    padding: 5px 0; }
+  #twitter_main #feed {
+    color: #444444; }
+    #twitter_main #feed .image {
+      display: inline-block; }
+    #twitter_main #feed .text {
+      width: 190px;
+      text-transform: none;
+      display: inline-block;
+      vertical-align: top; }
+  #twitter_main #post {
+    height: 50px; }
+    #twitter_main #post textarea.box {
+      height: 30px;
+      border: 1px solid #cccccc;
+      width: 185px;
+      resize: none; }
+    #twitter_main #post input[type="submit"].tweet-button {
+      background: white;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border: 1px solid #cccccc;
+      color: #444444;
+      font-size: 9px;
+      width: 40px;
+      height: 26px;
+      vertical-align: top;
+      margin-top: 4px; }
+
+#photos_main {
+  background-color: black;
+  position: relative;
+  left: 4px;
+  top: -6px;
+  width: 230px;
+  height: 311px;
+  overflow: hidden; }
+  #photos_main img {
+    min-height: 311px;
+    min-width: 230px;
+    border: none; }
+
+#footer {
+  text-align: right;
+  padding-top: 10px; }
+  #footer .nav {
+    line-height: 1.28;
+    position: relative;
+    top: -7px;
+    padding: 0 0 0 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal; }
+    #footer .nav a {
+      color: white;
+      text-decoration: none; }
+      #footer .nav a img {
+        border: none;
+        margin: 0px 0 -10px 0; }
+
+#facebox p .full-text {
+  padding: 2px 15px;
+  width: 320px;
+  line-height: 20px; }
+#facebox .popup {
+  position-left: -180px;
+  position-top: 150px; }
+#facebox .body {
+  padding: 15px 15px 0 15px;
+  background-color: #f2f2f2; }
+  #facebox .body .footer {
+    padding: 0px;
+    background-color: white; }
+  #facebox .body #content {
+    border-bottom: solid 1px #dddddd;
+    margin-left: -25px;
+    min-height: 300px; }
+    #facebox .body #content h3 {
+      font-weight: bold;
+      margin-top: 0px;
+      color: #17386c;
+      padding: 5px 10px;
+      width: 605px;
+      border-bottom: solid 1px #dddddd; }
+  #facebox .body #inner-content {
+    margin-left: 25px; }
+    #facebox .body #inner-content td {
+      border: 0px;
+      background-color: white;
+      font-weight: normal; }
+
+#frame #about {
+  font-size: 14px; }
+#frame .about-content {
+  font-size: 14px;
+  line-height: 20px; }
+#frame #frameset #content #detail {
+  font-size: 14px; }
+#frame #frameset #content .group-title {
+  font-size: 16px; }
+#frame #frameset #content .instruct a img {
+  border: none;
+  text-align: center;
+  display: block; }
+
+.login_error {
+  left: 36px;
+  padding: 10px;
+  position: absolute;
+  top: 87px; }
+
+.ui-tabs .ui-tabs-nav li a {
+  padding: 0.5em 0.6em; }
+
+.more_tweets_wrapper {
+  text-align: center;
+  margin-top: 10px; }
+
+.more_tweets {
+  color: blue;
+  text-decoration: none;
+  font-size: 12px; }
+
+.time_tweeted {
+  text-align: right;
+  margin-top: 5px; }
+
+#home_link_wrapper {
+  position: absolute;
+  left: 85px;
+  top: 25px;
+  width: 280px;
+  height: 60px;
+  z-index: 1000; }
+
+#home_link {
+  width: 280px;
+  height: 60px; }

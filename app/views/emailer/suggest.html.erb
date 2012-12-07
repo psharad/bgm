@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en-US' xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Connecting Sexes</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width' name='viewport' />
+    <meta content='True' name='HandheldFriendly' />
+    <meta content='240' name='MobileOptimized' />
+    <meta content='IE=9' http-equiv='X-UA-Compatible' />
+    <style type="text/css">
+      a{color: #0000ff; text-decoration:none;}
+      a:hover{text-decoration:underline;}
+    </style>
+  </head>
+  <body>
+    <div style='background-color: #eee; padding: 40px 20px;'>
+      <table cellspacing='0' cellpadding='0'>
+        <tr>
+          <td>
+              <div style="text-align:center; margin:0; background:#550A75;"><img src='<%= root_url.slice(0,(root_url.size-1)) %>/images/connectingsexes-email-logo.png'></div>
+              <div style='background-color: #fff; color: #2f0843; font-family: verdana, arial, helvetica, sans-serif; font-size: 14px;  margin:0; padding: 10px 10px;'>
+                <p><%= @user.email %> wants to invite you to join connectingsexes.com, click <%= link_to "here", "http://www.connectingsexes.com/", :target => "_blank" %> to join.</p>
+                <p>Meet many, find the one.</p>
+
+                <p>
+                  Good luck!
+                  <br />
+                  The Connecting Sexes Team
+                  <br />
+                  <a href='http://www.connectingsexes.com' target='_blank'>Connectingsexes.com</a>
+                </p>
+              </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

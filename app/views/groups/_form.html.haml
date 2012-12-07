@@ -1,0 +1,31 @@
+%br
+- form_for @group, :html => {:multipart => true} do |f|
+  / = f.hidden_field :user_id, :value => current_user.id
+  /= error_messages_for :group, :header_message => "Error:", :message => ""
+  .cred
+    .field-label Today's Date
+    = text_field_tag :created_at, Time.now.strftime("%B %d %Y"), :class => 'text_field', :readonly => true
+
+  .cred
+    .field-label Group Name
+    = f.text_field :name, :class => 'required text_field'
+    
+  .cred
+    .field-label City
+    / = f.select :city_id, City.all.collect {|p| [ p.abbrev, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    = f.select :city_id, list_of_cities, {:prompt => 'Select'}, {:class => 'required'}
+  
+  .cred
+    .field-label Zip
+    = f.text_field :zip, :class => 'required text_field'
+
+  .cred
+    .field-label Size of my Group
+    = f.select :size, 2..10, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    .field-label Gender of my Group
+    = f.select :gender, [["Men", "Men"], ["Women", "Women"], ["Mixed", "Mixed"]], {:prompt => 'Select'}, {:class => 'required'}
+    
+  .cred
+    = f.submit 'Continue', :disabled => true, :class => 'disabled'

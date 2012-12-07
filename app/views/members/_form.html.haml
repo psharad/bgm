@@ -1,0 +1,61 @@
+- form_for [@group, @member], :url => group_members_url(@group, rbtokenizer.merge(:mpos => params[:mpos])), :html => {:method => :post} do |f|
+  = error_messages_for :member, :header_message => nil, :message => ""
+  
+  = hidden_field_tag :mpos, params[:mpos]
+  = f.hidden_field :position, :value => params[:mpos]
+  
+  .cred
+    .field-label Email
+    = f.text_field :email, :class => 'required text_field email_check', :value => (@member_value.email rescue nil)
+    
+  .cred
+    .field-label Sex
+    - if current_user.groups.current_group.gender == "Men"
+      Men
+      = f.hidden_field :sex, :value => "Male"
+    - elsif current_user.groups.current_group.gender == "Women"
+      Women
+      = f.hidden_field :sex, :value => "Female"
+    - else
+      = f.select :sex, options_for_select(['Male', 'Female']), {:prompt => 'Select', :selected => @member_value.sex}, {:class => 'required'}
+  
+  .cred
+    .field-label Age
+    = f.select :age, 18..99, {:prompt => 'Select', :selected => (@member_value.age rescue nil)}, {:class => 'required'}
+
+  .cred
+    .field-label Build
+    = f.select :built_id, Built.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    .field-label Ethnicity
+    = f.select :ethnicity_id, Ethnicity.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    .field-label Education
+    = f.select :education_id, Education.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    Currently in College?
+    %br
+    = f.radio_button :in_college, true
+    Yes
+    = f.radio_button :in_college, false
+    No
+
+  .cred
+    .field-label Occupation
+    = f.select :occupation_id, Occupation.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    SAVE THIS MEMBER TO MY HISTORY&nbsp;
+    = f.check_box :in_history
+    %br.clear
+  %br      
+  = f.submit @can_add ? 'Add Member' : 'No More Members', :class => 'submit_button'
+  %br
+  %br
+  - if params[:mpos].to_i.eql?(1)
+    = link_to 'Back', new_user_path(rbtokenizer), :class => 'black-button', :style => "padding: 10px 71px"
+  - else
+    = link_to 'Back', new_group_member_url(@group, rbtokenizer.merge(:mpos => params[:mpos].to_i.pred)), :class => 'black-button', :style => "padding: 10px 71px"

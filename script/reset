@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rake db:reset
+rake db:seed
+rake sunspot:solr:stop
+rake sunspot:solr:start
+rake sunspot:solr:reindex
+script/server -u

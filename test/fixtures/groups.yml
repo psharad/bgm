@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  state: MyString
+  zip: MyString
+  gender: MyString
+  size: 1
+  match_preference: 1
+
+two:
+  state: MyString
+  zip: MyString
+  gender: MyString
+  size: 1
+  match_preference: 1

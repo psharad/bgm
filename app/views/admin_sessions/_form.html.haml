@@ -1,0 +1,13 @@
+
+#double
+- form_for(@admin_session) do |f|
+  .note Please Login Below
+  = error_messages_for :admin_session, :header_message => nil, :message => ""
+  .cred
+    .field-label Username
+    = f.text_field :username, :class => 'admin_login text_field'
+  .cred
+    .field-label Password
+    = f.password_field :password, :class => 'admin_login text_field'
+  .cred
+    = f.submit 'Log In', :class => 'disabled'

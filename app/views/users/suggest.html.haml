@@ -1,0 +1,12 @@
+#content
+  .title Suggest this site a Friend
+  .notice= clear_notice(notice)
+  %br
+  - form_tag({:action => 'send_suggest'}) do
+    .cred
+      .field-label Enter your Friend's E-mail Here
+      = text_field_tag(:email, params[:email])
+    .cred
+      = submit_tag('Go')
+      
+  = button_to "Back", home_url

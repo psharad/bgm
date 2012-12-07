@@ -1,0 +1,8 @@
+#content
+  .album
+    - for photo in @photos
+      .album-image= link_to image_tag(photo.src, :style => "width: 100px"), params[:f] ? save_fb_image_group_url(@group, :fb_image => photo.src, :f => params[:f]) : save_fb_image_group_url(@group, :fb_image => photo.src), :confirm => 'Are you sure you want this image?'
+  .cred
+    %br
+    = link_to 'Cancel', upload_photo_group_url, :class => 'small-black-button', :id => 'cancel'    
+  #spacer

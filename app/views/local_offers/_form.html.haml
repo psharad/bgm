@@ -1,0 +1,23 @@
+- form_for @local_offer, :html => { :multipart => true } do |f|
+  = f.error_messages
+  .cred
+    .field-label Title
+    = f.text_field :title
+    = f.hidden_field :admin_id, :value => current_admin.id
+  .cred
+    .field-label Local Offers
+    = f.text_area :description, :class => 'mceEditor'
+  - if self.action_name == 'edit'  
+    .cred
+      .field-label Current Image
+      = link_to image_tag(@local_offer.image.url(:small)), @local_offer.image.url(:large), :id =>"image"
+  .cred
+    .field-label Upload an Image
+    = f.file_field :image
+  
+  .cred
+    #single
+    = f.submit 'Save', :name => 'save_button'
+    = f.submit 'Submit', :name => 'submit_button'
+    = link_to 'Back', local_offers_url, :class => 'black-button'
+

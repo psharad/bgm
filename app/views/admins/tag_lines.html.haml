@@ -1,0 +1,11 @@
+%h1 Tag Line
+- form_for(@tag_line, :url => tag_lines_update_admins_url) do |f|
+  = notice
+  = f.error_messages
+  .cred
+    .field-label Tag Line
+    = f.text_field :name
+  %br
+  .cred
+    #single
+    = f.submit 'Update'

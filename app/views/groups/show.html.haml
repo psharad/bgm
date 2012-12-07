@@ -1,0 +1,9 @@
+- if @group.nil?
+  = render :partial => 'notfound'
+- else
+  = render :partial => 'details'
+  
+  -# if @group.expiration_date < Time.now
+    =# render :partial => 'expired'
+  -# else
+    =# render :partial => 'details'

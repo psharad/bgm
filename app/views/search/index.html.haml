@@ -1,0 +1,40 @@
+#content
+  .title Your Search Results
+  #result
+    - unless @results.empty?
+      - @results.each do |result|
+        - link_to group_url(result, params.stringify_keys.reject {|k,v| %(controller action authenticity_token).include?(k)}), :class => "result-row" do
+          .photo-tab
+            .photo_holder
+              = photo_display(result)
+          .info-tab
+            %strong Name:
+            %span.normal= result.name
+            %br
+            %strong State:
+            %span.normal= result.city.name if result.city
+            %br
+            %strong Zip:
+            = result.zip
+            %br
+            %strong Gender:
+            %span.normal= result.gender
+            %br
+            %strong Group Size:
+            = result.members.count+1 rescue 1
+      %br
+      %br
+      - if mobile_device?
+        = will_paginate @results, :params => params, :class => 'mobile_search_pagination', :previous_label => 'Previous', :next_label => 'Next', :page_links => false
+      - else
+        = will_paginate @results, :params => params
+      .back-search= link_to "Back", new_search_url, :class => 'black-button'
+    - else
+      %br
+      %center No results found. 
+      %br
+      %br 
+      %br.clear
+      = link_to "Back", new_search_url, :class => 'black-button'
+  %b
+  #spacer

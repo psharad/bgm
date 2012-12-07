@@ -1,0 +1,51 @@
+#content
+  .title Information About Your Group
+  .notice= clear_notice(notice)
+
+  - form_for @group, :html => {:multipart => true} do |f|
+    / = f.hidden_field :user_id, :value => current_user.id
+
+    = error_messages_for :group, :header_message => nil, :message => ""
+
+    .cred
+      %table
+        %tr
+          %td= photo_display(@group)
+          %td= link_to "Edit photo", edit_photo_group_url(@group), :class => "small-black-button", :style => "padding: 10px 13px"
+    .cred
+      .field-label Today's Date
+      = text_field_tag :created_at, Time.now.strftime("%B %d %Y"), :class => 'text_field', :readonly => true
+
+    / .row.spacer &nbsp;
+
+    .cred
+      .field-label Group Name
+      = f.text_field :name, :class => 'required text_field'
+      
+    .cred
+      .field-label City
+      / = f.select :city_id, City.all.collect {|p| [ p.abbrev, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+      = f.select :city_id, options_for_select(list_of_cities, @group.city_id.to_s), {:prompt => 'Select'}, {:class => 'required'}
+    
+    .cred
+      .field-label Zip
+      = f.text_field :zip, :class => 'required text_field'
+
+    .cred
+      .field-label Size of my Group
+      = @group.members.count+1 rescue 1
+
+    .cred
+      .field-label Gender of my Group
+      = f.select :gender, [["Men", "Men"], ["Women", "Women"], ["Mixed", "Mixed"]], {:prompt => 'Select'}, {:class => 'required'}
+
+    .cred
+      = f.submit 'Update', :class => 'button', :name => "lf"
+      %br
+      %br
+      = link_to 'Back', root_url, :class => 'black-button', :style => "padding: 10px 71px"
+  %br
+  %br    
+  = render :partial => "bot_nav_bar"
+- if mobile_device?
+  #spacer

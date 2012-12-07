@@ -1,0 +1,116 @@
+:javascript
+  $('.enter_email').live('click', function() {
+    $.fancybox({
+      'type' : 'inline',
+      'href' : $(this).attr('href')
+    });
+    $('#local_offer_id').val($(this).attr('id'));
+    $('#local_offer_email_recipient').val('');
+    return false;
+  });
+
+  $("a#image, a#box").fancybox({
+    'transitionIn'	:	'elastic',
+    'transitionOut'	:	'elastic',
+    'speedIn'		:	600, 
+    'speedOut'		:	200, 
+    'overlayShow'	:	true		
+  });
+  
+- if !mobile_device?
+  :javascript
+    // Local Offers Pagination
+    $(".pagination a").live("click", function() {
+      // $(".pagination").html("Page is loading...");
+      $.getScript(this.href);
+      return false;
+    });
+- else
+  :css
+    #enter_email {
+      color: #000;
+      text-align: center;
+    }
+    
+    #enter_email input#local_offer_email_recipient {
+      border: 1px solid #000;
+      width: 200px;
+    } 
+    
+    .local_offers_scroll {
+      position: relative;
+    }        
+
+    .local_offers_wrapper {
+      float: left;
+      width: 280px;
+      height: 78px;
+      margin:  7px 0 0 0;
+    }
+    
+    .local_offers_crop {
+      float: left;
+      width: 105px;
+      margin-right: 5px;
+    }
+
+    .local_offers_text {
+      float: right
+      width: 265px;
+      margin: 0 0 0 10px;
+      font-size: 11px;
+      line-height: 19px;
+    }
+    
+    .local_offers_text p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .local_offer_link {
+      color: blue;
+    }
+    
+    .local_offer_link:hover {
+      color: blue;
+    }
+
+%div{:style => 'display:none'}
+  #enter_email
+    Please enter your email
+    %br/
+    %br/
+    %input#local_offer_email_recipient{:type => "text"}/
+    %input#local_offer_id{:type => "hidden"}/
+    %br/
+    %br/
+    %input#send_local_offer{:type => 'button', :value => 'Submit'}
+
+- if !mobile_device?
+  - class_name = @local_offers.size > 8 ? 'local_offers_scroll' : ''
+  - ids = 'box'
+  - @desc_length = 70
+- else
+  - @desc_length = 50
+
+.local_offers_section{:class => class_name}
+  - for local_offer in @local_offers
+    .local_offers_wrapper
+      .local_offers_crop
+        - local_offer_page_path = mobile_device? ? local_offer_home_path(local_offer.id) : main_local_offer_path(local_offer.id)
+        = link_to(image_tag(local_offer.image.url(:small), :width => 105), local_offer_page_path, :id => ids)
+      .local_offers_text
+        = local_offer.title
+        =# truncate(sanitize(local_offer.description, :tags => %w(p)), :length => @desc_length, :omission => '...')
+        = truncate_html (local_offer.description.gsub(/(&nbsp\;|"font-size: .+")/i," "), :length => @desc_length, :omission => '...')
+      .local_offers_email
+        / - user_id = current_user ? current_user.member_id: ''
+        - if !current_user
+          = link_to 'Email Me Offer', '#enter_email', :class => 'enter_email local_offer_link', :id => local_offer.id
+        - else
+          /- debugger
+          = link_to 'Email Me Offer', '#', :class => 'send_local_offer_logged_in local_offer_link', :email => current_user.email, :id => local_offer.id
+      .clear
+    .clear
+=# image_tag('local_offer_spacer.png', :height => 20)
+= will_paginate(@local_offers)

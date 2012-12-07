@@ -1,0 +1,68 @@
+.instruct All fields are required
+
+- form_for :member, :url => save_added_members_url do |f|
+  //= error_messages_for :member, :header_message => "Error:", :message => ""
+  .cred
+    .field-label Email
+    = f.text_field :email, :class => 'required text_field edit_email_check', :value => (@member_value.email rescue nil)
+
+  .cred
+    .field-label Sex
+    - if current_user.groups.current_group.gender == "Men"
+      Men
+      = f.hidden_field :sex, :value => "Men"
+    - elsif current_user.groups.current_group.gender == "Women"
+      Women
+      = f.hidden_field :sex, :value => "Women"
+    - else
+      = f.select :sex, ['Male', 'Female'], {:prompt => 'Select', :selected => (@member_value.sex rescue nil)}, {:class => 'required'}
+  .cred
+    .field-label Age
+    = f.select :age, 18..99, {:prompt => 'Select', :selected => (@member_value.age rescue nil)}, {:class => 'required'}
+
+  / .cred
+  /   .field-label Height
+  /   = f.select :height_id, Height.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.height_id rescue nil)}, {:class => 'required'}
+  / 
+  / .cred
+  /   .field-label Built
+  /   = f.select :built_id, Built.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.built_id rescue nil)}, {:class => 'required'}
+  / 
+  / .cred
+  /   .field-label Ethnicity
+  /   = f.select :ethnicity_id, Ethnicity.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.ethnicity_id rescue nil)}, {:class => 'required'}
+
+  / .cred
+  /   .field-label Language
+  /   = f.select :language_id, Language.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.education_id rescue nil)}, {:class => 'required'}
+
+  / .cred
+  /   .field-label Education
+  /   = f.select :education_id, Education.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.education_id rescue nil)}, {:class => 'required'}
+
+  / .cred
+  /   .field-label University
+  /   = f.text_field :university, :class => 'required text_field', :value => (@member_value.university rescue nil)
+
+  / .cred
+  /   Currently in College?
+  /   %br
+  /   = f.radio_button :in_college, true
+  /   Yes
+  /   = f.radio_button :in_college, false
+  /   No
+  / 
+  / .cred
+  /   .field-label
+  /   = f.select :occupation_id, Occupation.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select', :selected => (@member_value.occupation_id rescue nil)}, {:class => 'required'}
+  /   %br.clear
+  
+  .cred
+    SAVE THIS MEMBER TO MY HISTORY&nbsp;
+    = f.check_box :in_history
+    %br.clear
+  = f.submit 'Save', :class => 'black-button'  
+  %br
+  %br
+  = link_to 'Back', edit_group_path(@group), :class => 'black-button'
+  #spacer

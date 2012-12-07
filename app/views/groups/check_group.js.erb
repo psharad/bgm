@@ -1,0 +1,11 @@
+<%- if @grp %>
+	$('.group_check').html("<span style='color:red'>Group name already exists.</span>");
+	$(':submit').attr('id', '');
+	$(':submit').attr('disabled', true);
+	$(':submit').attr('class', 'disabled');
+<%- else	%>
+	$('.group_check').html("");
+	$(':submit').attr('id', 'add');
+	$(':submit').attr('disabled', false);
+	$(':submit').attr('class', 'submit_button');
+<%- end %>

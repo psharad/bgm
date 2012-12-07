@@ -1,0 +1,12 @@
+#content
+  .notice= clear_notice(notice)
+  - form_tag delete_member_groups_path, :method => :put do
+    %table{:style => "width: 100%"}
+      - current_user.groups.current_group.members.each do |member|
+        %tr
+          %td.normal= member.email
+          %td= check_box_tag "member_ids[]", member.id
+    = submit_tag "Confirm Deletion"
+    %br
+    %br
+    = link_to 'Back', edit_group_path(current_user.groups.current_group), :class => 'black-button'

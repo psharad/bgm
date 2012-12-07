@@ -1,0 +1,16 @@
+config: &config
+  consumer_key: 6P4QBbcAyj45CdFLQ83pw
+  consumer_secret: GYbYxtML1dFrof7KbW9tJGN0DRejCYnAvWhIOSFjU
+  
+development:
+  <<: *config
+  host: http://127.0.0.1:3000
+
+test:
+  <<: *config
+  host: http://127.0.0.1:3000
+
+production:
+  consumer_key: 6P4QBbcAyj45CdFLQ83pw
+  consumer_secret: GYbYxtML1dFrof7KbW9tJGN0DRejCYnAvWhIOSFjU
+  host: http://www.connectingsexes.com

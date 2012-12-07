@@ -1,0 +1,51 @@
+!!! 5
+%html
+  %head
+    = render :partial => 'layouts/head'
+%body
+  %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "1099"}
+    %tbody
+      %tr
+        %td
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tbody
+              %tr
+                %td  
+              %tr
+                %td{:align => "center"}
+                  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "846"}
+                    %tbody
+                      %tr
+                        %td
+                          =link_to image_tag('home-menu.jpg', :border => "0", :height => "48", :width => "61"), root_url
+                        %td
+                          =link_to image_tag("about-menu.jpg", :border => "0", :height => "48", :width => "188"), about_homes_path   
+                        %td
+                          =link_to image_tag("signup-menu.jpg", :border => "0", :height => "48", :width => "199"), new_user_path(:from=>"sign_up")
+                        %td
+                          =link_to image_tag("login-menu.jpg", :border => "0", :height => "48", :width => "189"), login_path
+                        %td
+                          %a{:href => "#"}
+                            =mail_to "info@connectingsexes.com", image_tag("contact-menu.jpg", :border => "0", :height => "48", :width => "209")
+              %tr
+                %td
+                  =image_tag("line.jpg", :border => "0", :height => "22", :width => "1099")
+      =yield
+      %tr
+        %td
+          =image_tag("line.jpg",:height => "22", :width => "1099")
+      
+      %tr
+        %td{:align => "center"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "846"}
+            %tbody
+              %tr
+                - blogger_usernames = ['talesfromthedate', 'lifestyle', 'supertrainerrick']
+                - bloggers = Admin.find(:all, :conditions => ["blogger = ? AND username IN (?)", true, blogger_usernames], :order => 'created_at DESC')
+                - for blogger in bloggers
+                  - post = blogger_latest_post(blogger.username) 
+                  = render :partial => '/shared/latest_blog', :locals => { :post => post, :blogger => blogger.username , :name => blogger.name} 
+      %tr
+        %td{:align => "center"}
+          = link_to image_tag('f.jpg', :border => "0", :height => "30", :width => "17"), 'http://www.facebook.com/pages/ConnectingSexes/125066887588260', :target => '_blank', :style => 'margin-right:120px; float: right;'   
+          = link_to image_tag('t.jpg', :border => "0", :height => "30", :width => "33"), 'http://twitter.com/#!/connectingsexes', :target => '_blank', :style => ' float: right;'  

@@ -1,0 +1,2 @@
+module LocalOffersHelper
+end

@@ -1,0 +1,17 @@
+#post.grid_12
+  #left
+    .title=h @post.title
+    .author
+      by 
+      =h @post.author
+    .post_image= image_tag(@post.image.url(:medium))
+    .body=h @post.body.html_safe
+    #double
+    - if (@post.blogger_id == current_admin.id) 
+      = link_to "Edit", edit_post_url(@post), :class => 'med-black-button'
+
+    - if (@post.blogger_id == current_admin.id) or current_admin.blogger != true
+      = link_to "Delete", @post, :confirm => 'Are you sure?', :method => :delete, :class => 'med-black-button'
+
+    - unless self.action_name == 'main'
+      = link_to "Back", :back, :class => 'med-black-button'

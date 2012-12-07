@@ -1,0 +1,9 @@
+#content
+  / .notice= clear_notice(notice)
+  - form_tag({:action => :choose_method}) do
+    -if params[:from] == "root"
+      = render :partial => "group_step"
+    -else
+      = render :partial => "group_sign_up"
+    - if mobile_device? 
+      #spacer

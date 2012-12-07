@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @local_offer.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @local_offer.description %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%=h @local_offer.admin_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_local_offer_path(@local_offer) %> |
+<%= link_to 'Back', local_offers_path %>

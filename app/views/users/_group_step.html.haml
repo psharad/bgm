@@ -1,0 +1,83 @@
+:javascript
+  $(function() {
+    $("#add").live("click", function(){
+      if($("#group_name").val() == "Group Name" || $("#group_zip").val() == "Zipcode")
+      {
+        alert("All fields are required");
+        return false;
+      }
+    });
+  });
+%tr
+  %td.text
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tbody
+        %tr
+          %td{:align => "center"}
+            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "846"}
+              %tbody
+                %tr
+                  %td{:valign => "top"}
+                    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "420"}
+                      %tbody
+                        %tr
+                          %td{:align => "center", :style => "padding-top:50px;"}
+                            =image_tag("logo.jpg")
+                        %tr
+                          %td{:align => "left", :style => "padding-top:40px; padding-bottom:20px;"}
+                            =image_tag("welcome.jpg")
+                        %tr
+                          %td{:align => "left"} connecitngsexes.com is a free site where you register your group of friends to search and meet an attractive group of people for a fun, group date.
+                        %tr
+                          %td.text1{:align => "right", :style => "font-style:italic;"} Meet Many. Find the One
+                  %td  
+                  %td{:height => "426", :style => "background: url('/images/form-bg.jpg'); background-repeat:no-repeat;", :valign => "top", :width => "417"}
+                    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                      %tbody
+                        %tr
+                          %td{:width => "25"}  
+                          %td
+                            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                              %tbody
+                                %tr
+                                  %td{:height => "80"}  
+                                %tr
+                                  %td{:align => "left"}
+                                    = text_field_tag 'group[name]', @group.name, :onblur => "this.value=!this.value?'Group Name':this.value;", :onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Group Name",:class => 'required'
+                                %tr
+                                  %td{:height => "15"}
+                                %tr
+                                  %td{:align => "left"}
+                                    = select_tag 'group[city_id]', options_for_select(list_of_cities('select_tag'), @group.city_id.to_s), :onblur => "this.value=!this.value?'City':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "City", :class => 'required'
+                                %tr
+                                  %td{:height => "15"}
+                                %tr
+                                  %td{:align => "left"}
+                                    = text_field_tag 'group[zip]', @group.zip,  :onblur => "this.value=!this.value?'Zipcode':this.value;", :onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Zipcode", :class => 'required'
+                                %tr
+                                  %td{:height => "10"}
+                                %tr
+                                  %td{:align => "left"}
+                                    = select_tag 'group[gender]', options_for_select([["Gender Of My Group", nil], ["Men", "Men"], ["Women", "Women"], ["Mixed", "Mixed"]], @group.gender), :onblur => "this.value=!this.value?'Gender of Your Group':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Gender of Your Group", :class => 'required'
+                                %tr
+                                  %td{:height => "10"}
+                                %tr
+                                  %td{:align => "left"}
+                                    = select_tag 'group[size]', options_for_select(list_size_group, @group.size.to_i), :onblur => "this.value=!this.value?'Size of My Group':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Size of My Group", :class => 'required'
+                                %tr
+                                  %td{:height => "46"}
+                                %tr
+                                  %td{:align => "center", :style => "padding-right:20px;"}
+                                    %a{:href => "#"}
+                                    = image_submit_tag("continue.jpg", :border => "0", :id => 'add', :disabled => true, :class => 'disabled')
+                                %tr
+                                  %td{:height => "10"}
+                                %tr
+                                  %td{:align => "left", :style => "font-size:14px; line-height:20px; color:#FFFFFF;"}
+                                    By clicking on the "continue" I agree to the 
+                                    = link_to "terms of use", '/homes/terms', :class => "normal-link", :rel => "facebox"
+                                    and
+                                    = link_to "privacy policy", '/homes/privacy', :class => "normal-link", :rel => "facebox"
+                                %tr
+                                  %td  
+

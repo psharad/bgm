@@ -1,0 +1,34 @@
+%h2 Cities
+%form{:action => cities_admins_url, :method => :get}
+  %strong
+    New City
+  = hidden_field_tag :what, 'new'
+  .city_field
+    Name
+    = text_field_tag :name
+    .clear
+  .city_field
+    State
+    = text_field_tag :state
+    .clear
+  .city_field
+    Abbreviation
+    = text_field_tag :abbrev
+    .clear
+  .city_field
+    = submit_tag "Add City"
+%br.clear
+
+%form{:action => cities_admins_url, :method => :get}
+  = hidden_field_tag :what, 'update'
+
+  %ul#sortable
+    - for city in @cities
+      %li.ui-state-default
+        = hidden_field_tag 'city_id[]', city.id
+        = city.abbrev
+        = link_to 'delete', cities_admins_url(:what => 'delete', :id => city.id)
+        - text = city.displayed? ? "hide|" : "display|"
+        = link_to text, cities_admins_url(:what => 'display', :id => city.id)
+        
+  = submit_tag 'Update Order'

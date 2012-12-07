@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rake sunspot:solr:stop
+rake sunspot:solr:start
+script/server -u

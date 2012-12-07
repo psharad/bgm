@@ -1,0 +1,59 @@
+%tr
+  %td.text
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td{:align => "center", :style => "padding: 20px 0px;"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "759"}
+            %tr
+              %td{:background => "/images/group-leader-profile.jpg", :height => "423", :style => "background-repeat:no-repeat;", :valign => "top", :width => "417"}
+                %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                  %tr
+                    %td{:width => "25"}  
+                    %td
+                      - form_tag({:action => :create_leader}) do
+                        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                          %tr
+                            %td{:height => "35"}  
+                          %tr
+                            %td.text3{:align => "left", :style => "font-size:17px; line-height:18px;"}
+                              GROUP LEADER PROFILE
+                              %br/
+                              %span.style1 All fields are required.
+                          %tr
+                            %td.text3{:align => "left", :style => "font-size:12px; line-height:13px;", :height => "35"}
+                              .notice= clear_notice(notice)
+                          %tr
+                            %td{:align => "left"}
+                              = text_field_tag 'group_leader[email]', @user.email, :onblur => "this.value=!this.value?'EMAIL':this.value;", :onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:23px; background:none;", :type => "text", :value => "Email",:class => 'required'
+                          %tr
+                            %td{:height => "15"}
+                          %tr
+                            %td{:align => "left"}
+                              = password_field_tag 'group_leader[password]', nil, :style => "border:none; width:360px; height:23px; background:none;", :type => "text", :class => 'required text_field', :placeholder => "Password"
+                          %tr
+                            %td{:height => "15"}
+                          %tr
+                            %td{:align => "left"}
+                              = password_field_tag 'group_leader[password_confirmation]', nil, :style => "border:none; width:360px; height:23px; background:none;", :type => "text", :class => 'required text_field', :placeholder => "Verify password"
+                          %tr
+                            %td{:height => "12"}
+                          %tr
+                            %td{:align => "left"}
+                              = select_tag 'group_leader[sex]', options_for_select(['Male', 'Female'], @user.sex), :onblur => "this.value=!this.value?'SEX':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:23px; background:none;", :type => "text", :value => "SEX", :class => 'required'
+                          %tr
+                            %td{:height => "8"}
+                          %tr
+                            %td{:align => "left"}
+                              = select_tag 'group_leader[age]', options_for_select(list_size_group('age'), @user.age), :onblur => "this.value=!this.value?'SEX':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "SEX", :class => 'required'
+                          %tr
+                            %td{:height => "25"}
+                          %tr
+                            %td{:align => "left", :style => "padding-left:101px;"}
+                              = image_submit_tag("continue1.jpg", :id => 'group_submit', :disabled => true, :class => 'disabled')
+                          %tr
+                            %td{:height => "1"}
+                          %tr
+                            %td{:align => "left", :style => "padding-left:101px;"}
+                              = link_to image_tag("back.jpg"), choose_method_url
+
+

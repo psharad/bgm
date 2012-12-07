@@ -1,0 +1,9 @@
+#local_offer_single{:style => 'width:90%; margin-left:20px;'}
+  .post_image= image_tag(@local_offer.image.url(:medium))
+  %br
+  .title=h @local_offer.title
+  .body=h @local_offer.description.html_safe
+  %br
+  %center
+    =link_to 'Back', local_offers_homes_path, :class => 'black-button', :style => 'padding: 10px 70px'
+ 

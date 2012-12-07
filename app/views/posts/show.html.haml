@@ -1,0 +1,21 @@
+- if !mobile_device?
+
+  :javascript
+    $(function() {
+      $.fancybox(
+        {
+          'transitionIn'	:	'elastic',
+          'transitionOut'	:	'elastic',
+          'speedIn'		:	600, 
+          'speedOut'		:	200, 
+          'overlayShow'	:	true,
+          'href' : '#{escape_javascript request.url.split('').last == '/' ? request.url : request.url + '/' }' + 'main',
+          'onClosed' : function() {
+              window.location = '/';
+           }
+        }
+      );
+    });
+
+- else
+  = render :partial => 'posts/main'

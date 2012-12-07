@@ -1,0 +1,41 @@
+= f.error_messages
+.cred
+  .field-label Name
+  = f.text_field :name
+%br
+.cred
+  .field-label Username
+  - unless self.action_name == 'new'
+    = f.text_field :username, :disabled => 'disabled'
+  - else
+    = f.text_field :username
+%br
+.cred
+  .field-label Email
+  = f.text_field :email
+%br
+.cred
+  .field-label Enter New Password
+  = f.password_field :password, :class => 'required text_field'
+%br
+.cred
+  .field-label Confirm New Password
+  = f.password_field :password_confirmation, :class => 'required text_field'
+%br
+.cred
+  .field-label About
+  = f.text_area :about, :class => 'mceEditor'
+- if self.action_name == 'edit'  
+  %br
+  .cred
+    .field-label Current Image
+    = link_to image_tag(@admin.image.url(:small)), @admin.image.url(:large), :id =>"image"
+%br
+.cred
+  .field-label Upload an Image
+  = f.file_field :image
+%br
+.cred
+  #single
+  = f.submit 'Submit', :name => 'submit_button'
+  = link_to 'Back', blogger_admins_url, :class => 'black-button'

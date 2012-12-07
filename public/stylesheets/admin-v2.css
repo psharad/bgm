@@ -1,0 +1,84 @@
+body {
+  font-family: Verdana;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  background-color: #2f0843;
+  background-image: url(/images/main/main_bg.png);
+  background-position: top center;
+  background-repeat: no-repeat; }
+
+.header {
+  height: 150px; }
+
+.body {
+  background-color: white; }
+  .body .menus {
+    width: 150px;
+    padding: 0 0 150px 0; }
+    .body .menus a {
+      color: white;
+      background-color: black;
+      display: block;
+      padding: 10px;
+      text-decoration: none; }
+    .body .menus a.hover {
+      background-color: white;
+      color: black; }
+    .body .menus a:hover {
+      background-color: #f3f3f3;
+      color: black; }
+  .body .content {
+    padding: 10px 20px 20px 20px; }
+    .body .content table.list {
+      border-collapse: collapse; }
+      .body .content table.list th {
+        padding: 10px;
+        background-color: #a7c942;
+        border: 1px solid #98bf21; }
+      .body .content table.list td {
+        padding: 10px;
+        border: 1px solid #98bf21; }
+        .body .content table.list td a img {
+          border: none; }
+    .body .content .odd {
+      background-color: #eaf2d3; }
+    .body .content .even {
+      background-color: white; }
+    .body .content .pagination {
+      padding: 10px 0 0 0; }
+    .body .content #sortable {
+      list-style-type: none;
+      margin: 0;
+      padding: 0; }
+    .body .content #sortable li {
+      margin: 0 5px 5px 5px;
+      padding: 5px;
+      font-size: 1.2em;
+      height: 1.5em; }
+      .body .content #sortable li a {
+        float: right; }
+      .body .content #sortable li a:hover {
+        color: #2f0843; }
+    .body .content .ui-state-highlight {
+      height: 1.5em;
+      line-height: 1.2em; }
+  .body .left {
+    float: left; }
+  .body .clear {
+    clear: both; }
+
+.footer {
+  height: 50px; }
+
+.sort_by {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 20px; }
+
+.city_field {
+  width: 300px;
+  text-align: left; }
+  .city_field input[type="text"] {
+    float: right;
+    width: 200px; }

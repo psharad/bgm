@@ -1,0 +1,42 @@
+!!! 5
+%html{html_attrs}
+  %head
+    %title Connecting Sexes Admin
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    %meta{:content => "Connecting Sexes Admin", :name => "Description"}/
+    %link{:rel => "shortcut icon", :href => "/images/connectingsexes-logo.png", :type => "image/x-icon"}
+    = stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css'
+    = stylesheet_link_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.css'
+    = stylesheet_link_tag 'admin-v2'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js'
+    = javascript_include_tag '/javascripts/fancybox/jquery.fancybox-1.3.4.pack.js'
+    = javascript_include_tag 'admin'
+    = include_tiny_mce_if_needed
+    = yield(:head)
+
+  %body
+    .header
+    .body
+      .menus.left
+        = link_to 'Dashboard', dashboards_url, :class => (self.controller_name == "dashboards" ? 'hover' : '')
+        - unless current_admin.blogger == true
+          = link_to 'Beta Key', beta_key_admins_url, :class => (self.action_name == "beta_key" ? 'hover' : '')
+          = link_to 'Bloggers', blogger_admins_url, :class => (self.action_name == "blogger" ? 'hover' : (self.action_name == "edit" ? (current_admin.id == @admin.id ? '' : 'hover') : ''))
+          = link_to 'Cities', cities_admins_url, :class => (self.action_name == "cities" ? 'hover' : '')
+          = link_to 'Groups', groups_admins_url, :class => (self.action_name == "groups" ? 'hover' : '')
+          = link_to 'Images', images_url, :class => (self.controller_name == "images" ? 'hover' : '')
+          = link_to 'Interests', interests_admins_url, :class => (self.action_name == "interests" ? 'hover' : '')
+          = link_to 'Local Offers', local_offers_url, :class => (self.action_name == "local_offers" ? 'hover' : '')
+          = link_to 'Local Offers Tracking', local_offers_tracks_url, :class => (self.action_name == "local_offers_tracks" ? 'hover' : '')
+          = link_to 'Tag Line', tag_lines_admins_url, :class => (self.action_name == "tag_lines" ? 'hover' : '')
+        = link_to 'Posts', posts_url, :class => (self.controller_name == "posts" ? 'hover' : '')
+        - unless current_admin.blogger == true
+          = link_to 'My Account', edit_admin_path(current_admin), :class => (self.action_name == "edit" ? (current_admin.id == @admin.id ? 'hover' : '') : '')
+        = link_to "Logout", admin_logout_path
+      .content.left
+        .welcome= "Welcome #{current_admin.name}!"
+        = yield
+      %br.clear
+    .footer
+    

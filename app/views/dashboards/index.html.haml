@@ -1,0 +1,21 @@
+%h2 Dashboards
+- if @dashboards.blank?
+  .notice Sorry, there are no entries.
+- else
+  %table.list
+    %tr
+      %th Date
+      %th Description
+      %th Action
+    - for feed in @dashboards
+      %tr{:class => cycle('odd', 'even')}
+        %td.date= feed.created_at.strftime("%d-%m-%Y")
+        %td.desc= truncate(feed.description, :length => 50, :omission => '...')
+        %td.view
+          - if feed.deleted == false
+            - if !feed.image_id.nil?
+              = link_to 'Show', image_url(feed.image_id)
+            - elsif !feed.post_id.nil?
+              = link_to 'Show', post_url(feed.post_id)
+
+= will_paginate(@dashboards)

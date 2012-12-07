@@ -1,0 +1,14 @@
+/ %center= link_to image_tag("login-button.png", :border => "0"), "#", :onclick => "return facebookpopup('#{fb_connect_link}');"
+%center= button_to "Create group from Facebook",:onclick => "return facebookpopup('#{fb_connect_link}');"
+
+:javascript
+  function redirect_to(url) {
+    window.close();
+    if (window.opener && !window.opener.closed) {
+      if (url === '') { window.opener.location.reload(); }
+      else { window.opener.location=url; }
+    }
+  }
+  
+  redirect_to('#{@redirect_url}')
+

@@ -1,0 +1,5 @@
+$('.add_member_form_fb').html("<%= escape_javascript(render :partial => 'users/add_member_form')%>")
+$("#pop_loader").hide()
+$("#member_email").attr('disabled', false)
+$("#member_sex").attr('disabled', false)
+$("#member_age").attr('disabled', false)

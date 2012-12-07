@@ -1,0 +1,32 @@
+#content
+  - if @handler
+    %br
+    %br
+    An error has occurred while trying to connect to Facebook.
+    %br
+    %br
+    Please click #{link_to 'here', params[:f] ? edit_photo_group_url(current_user.groups.current_group, :clr => "1") : upload_photo_group_url(:clr => "1"), :class => 'normal-link'} and try again.
+  - else
+    - unless fb_logged_in
+      .notice= clear_notice(notice)
+      .title 
+        You must login to Facebook first
+      .cred
+        = link_to image_tag("login-button.png", :border => "0"), "#", :onclick => "return popitup('#{oauth_link}');"
+      %br
+    - else
+      .cred
+        Choose Photo  
+      .album
+        %strong Galleries
+        %br
+        - @albums.each do |album|
+          .album-image
+            = link_to facebook_photo(album.aid), params[:f] ? album_group_url(:album => album.aid, :f => params[:f]) : album_group_url(:album => album.aid)
+            %br
+            = link_to album.name, params[:f] ? album_group_url(:album => album.aid, :f => params[:f]) : album_group_url(:album => album.aid), :class => "normal-link"
+            &nbsp;
+    .cred
+      %br
+      = link_to 'Cancel', params[:f] ? edit_photo_group_url(current_user.groups.current_group) : upload_photo_group_url, :class => 'small-black-button', :id => 'cancel'
+  #spacer

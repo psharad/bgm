@@ -1,0 +1,145 @@
+#content
+  .group-title= @group.name
+  .notice= clear_notice(notice)
+  - photo = photo_in_view_group(@group)
+  / .photo_holder
+  /   .instruct= link_to image_tag(photo.first, :alt => photo[1]), photo.last
+  %br
+%div{:style => "text-align: center"}  
+  %div{:style => "display: inline-block"}
+    - if @group.user.eql?(current_user)
+      = link_to "Edit", edit_group_url(@group), :class => 'black-button', :style => "padding: 10px 75px"
+    - else
+      = link_to "Connect with Group", email_group_url(@group, params.stringify_keys.reject {|k,v| %(controller action authenticity_token).include?(k)}), :class => 'black-button', :style => "padding: 10px 36px"
+    #double
+  %div{:style => "display: inline-block"}
+    = link_to 'Back', search_index_url(params.stringify_keys.reject {|k,v| %(controller action authenticity_token).include?(k)}), :class => "black-button"
+#content
+  %br
+  #detail 
+    .col1 Date Created:
+    .col2= @group.created_at.strftime('%B %d, %Y')
+    
+    .col1 City:
+    .col2= @group.city.name rescue nil
+    
+    .col1 Zip:
+    .col2= @group.zip rescue nil
+    
+    .col1 Size of Group:
+    .col2= @group.members.count+1 rescue 1
+    
+    .col1 Sex of Group:
+    .col2= @group.gender rescue nil
+    
+    .col1 Group Interest:
+    .col2= @group.preference.interest.text rescue nil
+    
+    .col1 Day of the Week the Group is Free:
+    .col2= @group.preference.day.text rescue nil
+    
+    .col1 The Group Want to Meet:
+    .col2= @group.preference.description rescue nil
+    
+    .detail-title Group Leader
+    .profile_box
+      .image_content
+        .photo_holder
+          .instruct= link_to image_tag(photo.first, :alt => photo[1], :height => photo[2]), photo.last
+      .profile_detail
+        .col3 Age:
+        .col4= @group.user.age rescue nil
+        %br
+        .col3 Sex:
+        .col4= @group.user.sex rescue nil
+
+        - if !@group.user.height_id.nil?
+          %br
+          .col3 Height:
+          .col4= Height.find(@group.user.height_id).text rescue nil
+
+        - if !@group.user.built_id.nil?
+          %br
+          .col3 Build:
+          .col4= Built.find(@group.user.built_id).text rescue nil
+
+
+        - if !@group.user.ethnicity_id.nil?
+          %br
+          .col3 Ethnicity:
+          .col4= Ethnicity.find(@group.user.ethnicity_id).text rescue nil
+
+        - if !@group.user.education_id.nil?
+          %br
+          .col3 Education:
+          .col4= Education.find(@group.user.education_id).text rescue nil
+
+        - if !@group.user.education_id.nil?
+          %br
+          .col3 In College:
+          - if @group.user.in_college?
+            .col4 Yes
+          - else
+            .col4 No
+
+        - if !@group.user.occupation_id.nil?
+          %br
+          .col3 Occupation:
+          .col4= Occupation.find(@group.user.occupation_id).text rescue nil
+
+
+    %br.clear
+    .little_spacer
+    
+    .detail-title Members
+    - @group.members.each do |member|
+      .profile_box
+        .image_content
+          - photo2 = photo_member_view(member)
+          .photo_holder
+            .instruct= link_to image_tag(photo2.first, :alt => photo2[1], :height => photo2[2]), photo2.last
+        .profile_detail
+          .col3 Age:
+          .col4= member.age rescue nil
+          %br
+          .col3 Sex:
+          .col4= member.sex rescue nil
+
+          - if !member.height_id.nil?
+            %br
+            .col3 Height:
+            .col4= Height.find(member.height_id).text rescue nil
+
+          - if !member.built_id.nil?
+            %br
+            .col3 Build:
+            .col4= Built.find(member.built_id).text rescue nil
+
+
+          - if !member.ethnicity_id.nil?
+            %br
+            .col3 Ethnicity:
+            .col4= Ethnicity.find(member.ethnicity_id).text rescue nil
+
+          - if !member.education_id.nil?
+            %br
+            .col3 Education:
+            .col4= Education.find(member.education_id).text rescue nil
+
+          - if !member.education_id.nil?
+            %br
+            .col3 In College:
+            - if member.in_college?
+              .col4 Yes
+            - else
+              .col4 No
+
+          - if !member.occupation_id.nil?
+            %br
+            .col3 Occupation:
+            .col4= Occupation.find(member.occupation_id).text rescue nil
+
+      %br.clear  
+      .little_spacer
+      
+  #spacer

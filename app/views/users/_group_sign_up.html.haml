@@ -1,0 +1,67 @@
+:javascript
+  $(function() {
+    $("#add").live("click", function(){
+      if($("#group_name").val() == "Group Name" || $("#group_zip").val() == "Zipcode")
+      {
+        alert("All fields are required");
+        return false;
+      }
+    });
+  });
+%tr
+  %td{:align => "center", :style => "padding: 20px 0px;"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "759"}
+      %tr
+        %td{:background => "/images/group-name.jpg", :height => "423", :style => "background-repeat:no-repeat;", :valign => "top", :width => "417"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td{:width => "25"}  
+              %td
+                %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                  %tr
+                    %td{:height => "38"}  
+                  %tr
+                    %td.text3{:align => "left", :style => "font-size:17px; line-height:18px;"}
+                      GROUP NAME
+                      %br/
+                      %span.style1 All fields are required.
+                  %tr
+                    %td{:height => "35"}
+                  %tr
+                    %td{:align => "left"}
+                      = text_field_tag 'group[name]', @group.name, :onblur => "this.value=!this.value?'Group Name':this.value;", :onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:23px;margin-top:-3px; background:none;", :type => "text", :value => "Group Name",:class => 'required'
+                  %tr
+                    %td{:height => "10"}
+                  %tr
+                    %td{:align => "left"}
+                      = select_tag 'group[city_id]', options_for_select(list_of_cities('select_tag'), @group.city_id.to_s), :onblur => "this.value=!this.value?'City':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "City", :class => 'required'
+                  %tr
+                    %td{:height => "15"}
+                  %tr
+                    %td{:align => "left"}
+                      = text_field_tag 'group[zip]', @group.zip,  :onblur => "this.value=!this.value?'Zipcode':this.value;", :onclick => "this.value='';", :onfocus => "this.select()", :style => "border:none; width:360px; height:23px; background:none;", :type => "text", :value => "Zipcode", :class => 'required'
+                  %tr
+                    %td{:height => "15"}
+                  %tr
+                    %td{:align => "left"}
+                      = select_tag 'group[gender]', options_for_select([["Gender Of My Group", nil], ["Men", "Men"], ["Women", "Women"], ["Mixed", "Mixed"]], @group.gender), :onblur => "this.value=!this.value?'Gender of Your Group':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Gender of Your Group", :class => 'required'
+                  %tr
+                    %td{:height => "15"}
+                  %tr
+                    %td{:align => "left"}
+                      = select_tag 'group[size]', options_for_select(list_size_group, @group.size.to_i), :onblur => "this.value=!this.value?'Size of My Group':this.value;", :onfocus => "this.select()", :style => "border:none; width:360px; height:25px; background:none;", :type => "text", :value => "Size of My Group", :class => 'required'
+                  %tr
+                    %td{:height => "27"}
+                  %tr
+                    %td{:align => "left", :style => "padding-left:101px;"}
+                      = image_submit_tag("continue1.jpg", :id => 'add', :disabled => true, :class => 'disabled')
+                  %tr
+                    %td{:height => "10"}
+                  %tr
+                    %td{:align => "left", :style => "font-size:14px; line-height:20px; color:#FFFFFF;"}
+                      %span{:style => "color: #381852;"}
+                        By clicking on the "continue" I agree to the 
+                        = link_to "terms of use", '/homes/terms', :rel => "facebox"
+                        and
+                        = link_to "privacy policy", '/homes/privacy', :rel => "facebox"
+ 

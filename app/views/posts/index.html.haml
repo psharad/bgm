@@ -1,0 +1,45 @@
+%h2 Posts
+
+- if current_admin.blogger == true
+  = link_to "Create New Post", new_post_url, :class => 'black-button'
+
+%h3 Drafts
+- if @draft.blank?
+  .notice Sorry, there are no drafts.
+- else
+  %table.list
+    %th Date
+    %th Title
+    - if current_admin.blogger == true
+      %th Action
+    - @draft.each do |blog|
+      %tr{:class => cycle('odd', 'even')}
+        %td.date= blog.created_at.strftime("%d-%m-%Y")
+        %td.title= truncate(blog.title, :length => 50, :omission => '...')
+        - if current_admin.blogger == true
+          %td.action
+            = link_to "Edit", edit_post_path(blog)
+            = link_to "Delete", blog, :confirm => 'Are you sure?', :method => :delete
+  = will_paginate @draft, :param_name => 'draft'
+
+%h3 Published
+- if @published.blank?
+  .notice Sorry, there are no post.
+- else
+  %table.list
+    %th Date
+    %th Title
+    %th Slug (URL)
+    %th Action
+    - @published.each do |blog|
+      %tr{:class => cycle('odd', 'even')}
+        %td.date= blog.created_at.strftime("%d-%m-%Y")
+        %td.title= truncate(blog.title, :length => 50, :omission => '...')
+        %td.slug=blog.cached_slug
+        %td.action
+          /= link_to "Read More", blog, :class => 'view'
+          = link_to(blog.title, post_path(blog.friendly_id), :class => 'read_more_post', :target => '_blank')
+          -if current_admin.blogger == true
+            = link_to "Edit", edit_post_path(blog)
+            = link_to "Delete", blog, :confirm => 'Are you sure?', :method => :delete
+  = will_paginate @published, :param_name => 'published'

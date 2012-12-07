@@ -1,0 +1,10 @@
+#admin_nav.grid_12
+  = link_to 'Dashboard', dashboards_url, :class => 'med-black-button'
+  = link_to 'Posts', posts_url, :class => 'med-black-button'
+  - unless current_admin.blogger == true
+    = link_to 'Images', images_url, :class => 'med-black-button'
+    = link_to 'Bloggers', blogger_admins_url, :class => 'med-black-button'
+    = link_to 'Groups', groups_admins_url, :class => 'med-black-button'
+    = link_to 'My Account', edit_admin_path(current_admin), :class => 'med-black-button'
+    = link_to 'Beta Key', beta_key_admins_url, :class => 'med-black-button'
+  = link_to "Logout", admin_logout_path, :class => 'med-black-button'

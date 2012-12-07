@@ -1,0 +1,12 @@
+%h2 Beta Key
+%p= clear_notice(notice)
+%p Beta Key is required.
+
+- form_for @beta , :url => beta_key_admins_url, :html => {:method => :get} do |f|
+  = f.error_messages
+  %p
+    Beta Key
+    %br
+    = f.text_field :beta_key
+  %p
+    = submit_tag :save

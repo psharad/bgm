@@ -1,0 +1,28 @@
+<p>
+  <b>Username:</b>
+  <%=h @admin.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @admin.email %>
+</p>
+
+<p>
+  <b>Crypted password:</b>
+  <%=h @admin.crypted_password %>
+</p>
+
+<p>
+  <b>Password salt:</b>
+  <%=h @admin.password_salt %>
+</p>
+
+<p>
+  <b>Persistence token:</b>
+  <%=h @admin.persistence_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_path(@admin) %> |
+<%= link_to 'Back', admins_path %>

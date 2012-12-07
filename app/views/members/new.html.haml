@@ -1,0 +1,45 @@
+#content
+  .title Member Profile
+  .instruct All fields are required.
+  .notice= clear_notice(notice)
+
+  .form
+    / .note Member email shall not be used for spam and be kept private inside connecting sexes only.
+    - form_for [@group, @member], :url => group_members_url(@group, rbtokenizer.merge(:mpos => params[:mpos])), :html => {:method => :post} do |f|
+      = error_messages_for :member, :header_message => nil, :message => ""
+      
+      = hidden_field_tag :mpos, params[:mpos]
+      = f.hidden_field :position
+      
+      .cred
+        .field-label Email
+        = f.text_field :email, :class => 'required text_field email_check'
+        
+      .cred
+        .field-label Sex
+        - if current_user.groups.current_group.gender == "Men"
+          Men
+          = f.hidden_field :sex, :value => "Male"
+        - elsif current_user.groups.current_group.gender == "Women"
+          Women
+          = f.hidden_field :sex, :value => "Female"
+        - else
+          = f.select :sex, ['Male', 'Female'], {:prompt => 'Select'}, {:class => 'required'}
+      
+      .cred
+        .field-label Age
+        = f.select :age, 18..99, {:prompt => 'Select'}, {:class => 'required'}
+
+      .cred
+        SAVE THIS MEMBER TO MY HISTORY&nbsp;
+        = f.check_box :in_history
+        %br.clear
+      %br      
+      = f.submit @can_add ? 'Add Member' : 'No More Members', :class => 'submit_button'
+      %br
+      %br
+      - if @member.position.eql?(1)
+        = link_to 'Back', new_user_path(rbtokenizer), :class => 'black-button', :style => "padding: 10px 71px"
+      - else
+        = link_to 'Back', new_group_member_url(@group, rbtokenizer.merge(:mpos => @member.position.pred)), :class => 'black-button', :style => "padding: 10px 71px"
+    #spacer

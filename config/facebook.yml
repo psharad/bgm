@@ -1,0 +1,32 @@
+config: &config
+  # fb_api_key: eb6c234c0397cefdba87d4eab0f066b0
+  # fb_secret: a9eec3df7c04e80afaa350cb93769af0
+  # fb_app_id: 179336708783877
+  fb_secret: 683f498b8f92edc7dfdc4b82fa83d1a7
+  fb_app_id: 130000397093832
+  permissions: ['user_birthday', 'email', 'user_photos', 'friends_photos']
+  permissions2: ['user_about_me', 'friends_about_me', 'user_birthday', 'friends_birthday', 'email', 'user_photos', 'friends_photos']
+
+development:
+  <<: *config
+  host: http://localhost:3000
+    
+test:
+  <<: *config
+  host: http://localhost:3000
+  
+production:
+  # STAGING
+  # fb_app_id: 213004558733107
+  # fb_secret: 320a656f31ec72b2d469ef435a1a2142
+  # host: http://bgm.sourcepad.com
+  
+  PRODUCTION
+  fb_api_key: 4684b90a79954d22242f212b4a879bcb
+  fb_app_id: 100738350013385
+  fb_secret: 4655b7e5e576b2a949305bfedbf3b12b
+  host: http://www.connectingsexes.com
+
+  permissions: ['user_birthday', 'email', 'user_photos', 'friends_photos']
+  permissions2: ['user_about_me', 'friends_about_me', 'user_birthday', 'friends_birthday', 'email', 'user_photos', 'friends_photos']
+  

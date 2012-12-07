@@ -1,0 +1,4 @@
+- if current_user.groups.current_group.nil?
+  = render :partial => 'deactivated'
+- else
+  = render :partial => 'email'

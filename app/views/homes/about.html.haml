@@ -1,0 +1,85 @@
+- if mobile_device?
+  #about
+    .normal= render :partial => 'about'
+- else
+  %tr
+  %td.text2
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tbody
+        %tr
+          %td{:align => "center"}
+            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "846", :style => "margin-left: 70px;"}
+              %tbody
+                %tr
+                  %td.head{:align => "left"} About
+                %tr
+                  %td
+                    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                      %tbody
+                        %tr
+                          %td{:style => "border-right: 2px solid rgb(188, 165, 199);", :valign => "top"}
+                            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                              %tbody
+                                %tr
+                                  %td{:height => "40"}  
+                                %tr
+                                  %td{:align => "center"}
+                                    =image_tag('logo.jpg')
+                                %tr
+                                  %td  
+                                %tr
+                                  %td{:style => "padding-right: 20px;"}
+                                    %p
+                                      connectingsexes.com
+                                      is new, free group date site that allows you to build a group profile
+                                      and begin searching for an attractive group for fun and games in under 5
+                                      minutes.
+                                    %p.text3 Why Connectingsexes.com?
+                                    %p
+                                      Trying to find " Mr. Or Ms. Right/right Now "
+                                      online can oftentimes be a long, drawn out process. It Typically starts
+                                      with a long-winded story about adventure, accomplishment and mutual love
+                                      of puppies and then transitions to the awkward, first 'blind' date and a
+                                      few over-priced dinners. But unfortunately, in most cases, these online
+                                      meeting flame out and the end result is the " it's not you, it's me"
+                                      text. Don't get us wrong; many people have found love by conventional
+                                      online dating, but we think there might be a better way.
+                                      %br
+                                    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                                      %tbody
+                                        %tr
+                                          %td{:align => "left", :width => "50"}
+                                            =image_tag("dot.jpg")
+                                          %td.text3{:align => "left"} " OUR MOTTO IS " MEET MANY. FIND THE ONE."
+                                    %p
+                                      Thus, our goal is to emulate the great college
+                                      experience where " our group met up with your group " at the local spot
+                                      for good times. Granted,random hook-up and break-ups still resulted, but
+                                      at the end of the day, this "meet-up" was the  devlopment of many deep
+                                      realationships.
+                                    %p
+                                      We also inherently believe people feel safer
+                                      and are more comfortable in a group stting,have short-term
+                                      timelines,dont't want to write "War and peace" about their past life,and
+                                      most importantly-they want it all for free.
+                                    %p
+                                      If you have any questions or feedback,email
+                                      %a{:href => "mailto:info@connectingsexes.com"} info@connectingsexes.com
+                          %td{:valign => "top", :width => "180"}
+                            %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                              %tbody
+                                %tr
+                                  %td
+                                    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "5%"}
+                                      %tbody
+                                        %tr
+                                          %td
+                                            = link_to image_tag('t.jpg', :border => "0", :height => "30", :width => "33"), 'http://twitter.com/#!/connectingsexes', :target => '_blank'
+                                          %td
+                                            = link_to image_tag('f.jpg', :border => "0", :height => "30", :width => "17"), 'http://www.facebook.com/pages/ConnectingSexes/125066887588260', :target => '_blank', :style => 'margin-right:10px'
+                                %tr
+                                  %td{:height => "10"}
+                                %tr
+                                  %td{:align => "left"}
+                                    =image_tag("right-side.jpg", :border => "0", :height => "282", :width => "166")
+        

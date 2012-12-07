@@ -1,0 +1,45 @@
+#content
+  - unless mobile_device?
+    #quad
+  .title Search by Group
+
+  .remind Please enter the following information about the group you would like to search.
+  %br
+  - form_for :search, :url => search_index_url do |f|
+
+    .cred
+      .field-label City
+      / = f.select :city_id, City.all.collect {|p| [ p.abbrev, p.id ] }, :prompt => 'Optional'
+      /= f.select :city_id, list_of_cities, {:prompt => 'Optional', :include_blank => true }
+      = select_tag 'search[city_id]', options_for_select(list_of_cities('optional_tag'))
+      / %select#search_city_id{:name => "search[city_id]"}
+      /   %option{:value => ""} Optional
+      /   %option{:value => "1"} New York City, NY
+      /   %option{:value => "204"} Richmond, VA
+
+    .cred
+      .field-label Number of members in group
+      /= f.select :group_size, 2..10, :prompt => 'Optional'
+      %select#search_group_size{:name => "search[group_size]"}
+        %option{:value => ""} Optional
+        %option{:value => "2"} 2
+        %option{:value => "3"} 3
+        %option{:value => "4"} 4
+        %option{:value => "5"} 5
+        %option{:value => "6"} 6
+        %option{:value => "7"} 7
+        %option{:value => "8"} 8
+        %option{:value => "9"} 9
+        %option{:value => "10"} 10
+
+    .cred
+      .field-label Gender of Group
+      /= f.select :gender, [["Men", "Men"], ["Women", "Women"], ["Any/Mixed", ""]], :prompt => 'Optional'
+      %select#search_gender{:name => "search[gender]"}
+        %option{:value => ""} Optional
+        %option{:value => "Men"} Men
+        %option{:value => "Women"} Women
+        %option{:value => ""} Any/Mixed
+
+      %br.clear
+    = f.submit 'Search'

@@ -1,0 +1,33 @@
+!!! 5
+%html{html_attrs}
+  %head
+  - if mobile_device?
+    %title Conn Sexes
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    %meta{"name"=>"viewport", "content"=>"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0"}/
+    %meta{"name"=>"HandheldFriendly", "content"=>"True"}/
+    %meta{"name"=>"MobileOptimized", "content"=>"240"}/
+    %meta{"name"=>"apple-mobile-web-app-capable", "content"=>"yes"}
+
+    - if apple_device?
+      = stylesheet_link_tag 'apple'
+    - else android_device?
+      = stylesheet_link_tag 'android'
+   
+    = stylesheet_link_tag 'blog'
+  
+  %body
+    #nav
+      #logo
+        = link_to image_tag('connectingsexes-home-logo.png'), ((current_user.present? and !current_user.setup_flag) ? 'javascript:void()' : root_url)
+        %br      
+        - tag_line = TagLine.find(:first)
+        = tag_line.name
+        %br
+        %br
+        = render :partial => 'shared/nav_bar' unless (current_user.present? and !current_user.setup_flag)
+
+    #content_wrapper
+      #blog
+        = yield
+    

@@ -1,0 +1,63 @@
+#content
+  .title Member Profile
+  .notice= clear_notice(notice)
+
+  .form
+    .instruct All fields are required.
+    %br
+    - form_for :member, :url => save_added_members_url do |f|
+      = error_messages_for :member, :header_message => nil, :message => ""
+      .cred
+        .field-label Email
+        = f.text_field :email, :class => 'required text_field edit_email_check'
+
+      .cred
+        .field-label Sex
+        - if current_user.groups.current_group.gender == "Men"
+          Men
+          = f.hidden_field :sex, :value => "Male"
+        - elsif current_user.groups.current_group.gender == "Women"
+          Women
+          = f.hidden_field :sex, :value => "Female"
+        - else
+          = f.select :sex, ['Male', 'Female'], {:prompt => 'Select'}, {:class => 'required'}
+
+      .cred
+        .field-label Age
+        = f.select :age, 18..99, {:prompt => 'Select'}, {:class => 'required'}
+
+      / .cred
+      /   .field-label Build
+      /   = f.select :built_id, Built.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+      / 
+      / .cred
+      /   .field-label Ethnicity
+      /   = f.select :ethnicity_id, Ethnicity.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+      /  
+      / .cred
+      /   .field-label Education
+      /   = f.select :education_id, Education.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+      /   
+      / .cred
+      /   Currently in College?
+      /   %br
+      /   = f.radio_button :in_college, true
+      /   Yes
+      /   = f.radio_button :in_college, false
+      /   No
+      / 
+      / .cred
+      /   .field-label Occupation
+      /   = f.select :occupation_id, Occupation.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+      /   %br.clear
+      / 
+      .cred
+        SAVE THIS MEMBER TO MY HISTORY&nbsp;
+        = f.check_box :in_history
+        %br.clear
+      = f.submit 'Save', :disabled => true, :class => 'black-button'
+      %br
+      %br
+      = link_to 'Back', edit_group_path(@group), :class => 'black-button'
+      %br.clear
+      #spacer

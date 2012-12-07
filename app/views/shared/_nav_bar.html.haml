@@ -1,0 +1,22 @@
+%div{:style => "text-align:center"}
+  %div{:style => "display: inline-block"}
+    = link_to 'Home', root_url, :class => 'med-black-button', :style => "padding: 10px 60px"
+  %div{:style => "display: inline-block"}
+    - if current_user
+      = link_to 'Log Out', logout_path, :class => 'med-black-button', :style => "padding: 10px 55px"
+    - else
+      - unless self.controller_name == 'user_sessions'
+        = link_to 'Log In', login_path, :class => 'med-black-button', :style => "padding: 10px 58px"
+  %div
+    %br
+    %br
+    - if current_user
+      = link_to 'Settings', edit_user_path(current_user), :class => 'black-button', :style => "padding: 10px 64px"
+  / %table
+  /   %tr
+  /     %td= link_to 'Home', root_url, :class => 'small-black-button', :style => "padding: 10px 24px"
+  /     - if current_user
+  /       %td= link_to 'Settings', edit_user_path(current_user), :class => 'small-black-button', :style => "padding: 10px 20px"
+  /       %td= link_to 'Log Out', logout_path, :class => 'small-black-button', :style => "padding: 10px 19px"
+  /     - else
+  /       %td= link_to 'Log In', login_path, :class => 'small-black-button', :style => "padding: 10px 23px"

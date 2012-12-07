@@ -1,0 +1,16 @@
+log/*
+tmp/*
+db/*.sqlite3
+public/system/*
+.DS_Store
+app/.DS_Store
+db/.DS_Store
+db/migrate/.DS_Store
+public/.DS_Store
+config/database.yml
+db/schema.rb
+public/uploads/*
+solr/data/*
+.bundle/*
+.rvmrc
+bin/*

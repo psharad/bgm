@@ -1,0 +1,25 @@
+!!! Strict
+%html{html_attrs}
+  %head
+    = render :partial => 'layouts/head'
+  %body
+    #top
+    #middle.container_12
+      #content
+        .top_nav
+          %br.clear
+          - if self.controller_name != 'beta_pages'
+            - if self.action_name == 'index'
+              - if mobile_device?
+                = link_to 'Add Icon to Device', '#', :class => 'button'
+              = link_to 'About', about_homes_url, :class => 'button'
+            - else
+              = link_to 'Home', root_url, :class => 'button'
+
+            - if self.controller_name != 'user_sessions'
+              - if current_user
+                = link_to 'Account Settings', edit_user_path(current_user), :class => 'button'
+                = link_to 'Log Out', logout_path, :class => 'button'
+        %br.clear
+        = yield        
+    #bottom 

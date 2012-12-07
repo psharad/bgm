@@ -1,0 +1,7 @@
+.cred= link_to 'Add Member', add_members_url, :class => 'black-button', :style => 'padding: 10px 52px'
+%br
+.cred= link_to 'Edit Member', (@group.members.empty? ? no_member_group_url(@group) : edit_group_member_url(@group, @group.members.first)), :class => 'black-button', :style => 'padding: 10px 53px'
+%br
+.cred= link_to 'Remove Member', remove_group_url(current_user.groups.current_group), :class => 'black-button', :style => 'padding: 10px 42px'
+%br
+.cred= link_to 'Deactivate Group', deactivate_group_url(current_user.groups.current_group), :confirm => 'Are you sure?', :class => 'black-button', :style => 'padding: 10px 42px'

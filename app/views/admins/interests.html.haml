@@ -1,0 +1,19 @@
+%h2 Interests
+%form{:action => interests_admins_url, :method => :get}
+  New Interest
+  = hidden_field_tag :what, 'new'
+  = text_field_tag :text
+  = submit_tag :save
+
+%br.clear
+
+%form{:action => interests_admins_url, :method => :get}
+  = hidden_field_tag :what, 'update'
+
+  %ul#sortable
+    - for interest in @interests
+      %li.ui-state-default
+        = hidden_field_tag 'interest_id[]', interest.id
+        = interest.text
+        = link_to 'x', interests_admins_url(:what => 'delete', :id => interest.id)
+  = submit_tag 'Update Order'

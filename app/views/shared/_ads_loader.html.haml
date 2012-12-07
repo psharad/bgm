@@ -1,0 +1,14 @@
+- if (!mobile_device?) && (!apple_device?) && (!android_device?)
+  :javascript
+    jQuery.facebox("#{escape_javascript(render :partial => 'shared/ads')}");
+
+  - if (chrome?)
+    :javascript
+      var frame = $('#frame').offset()
+      $('#facebox').css({ left: (frame.left - 17) + 'px', top: (frame.top - 10) + 'px'})
+  - else
+    :javascript
+      var frame = $('#frame').offset()
+      $('#facebox').css({ left: (frame.left - 10) + 'px', top: (frame.top - 10) + 'px'})
+  :javascript
+    setTimeout("closeFacebox()", 4000)

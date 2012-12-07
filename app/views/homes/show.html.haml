@@ -1,0 +1,44 @@
+#content
+  .notice= clear_notice(notice)
+  - if (!current_user.nil?) and (current_user.groups.empty? || current_user.groups.current_group.nil?)
+    %br  
+    .links
+      = link_to 'Start a Group', new_user_path, :class => 'black-button'
+      
+  - else
+    .group-title "#{current_user.groups.current_group.name}"
+    .center-text-title=#"has #{expiration_in_words(current_user.groups.current_group.expiration_date)} remaining"
+    .links
+      %br
+      .cred= link_to 'Edit this Group', edit_group_path(current_user.groups.current_group), :class => 'black-button', :style => 'padding: 10px 48px'
+      / %br
+      / .cred=# link_to 'Extend this Group 7 days', edit_group_path(current_user.groups.current_group, :extend => true), :class => 'black-button', :style => 'padding: 10px 24px'
+      %br
+      .cred= link_to 'Search Available Groups', new_search_path, :class => 'black-button', :style => 'padding: 10px 26px'
+      %br
+      .cred= link_to 'Suggest to a Friend', suggest_users_path, :class => 'black-button', :style => 'padding: 10px 40px'
+      %br
+      - if mobile_device?
+        .cred= link_to 'Local Offers', local_offers_homes_path, :class => 'black-button', :style => 'padding: 10px 55px'
+        %br
+  %br
+  %br
+  - if mobile_device?
+    / #tweet
+    /   #title
+    /     Tweet here about dating or relationships and follow us on #{link_to "Twitter", "http://twitter.com/connectingsexes"} and #{link_to "Facebook", "http://www.facebook.com/apps/application.php?id=100738350013385"}.
+    /   - unless tw_logged_in
+    /     .links
+    /       .cred= link_to image_tag("sign-in-with-twitter-d.png"), new_twitter_session_url
+    /   - else
+    /     #post
+    /       - form_for :tweet, :url => post_twitter_sessions_url do |f|
+    /         = image_tag "twitter.jpg", :style => 'height: 28px'
+    /         = f.text_area :message, :class => 'box'
+    /         = f.submit "Tweet", :class => 'tweet-button'
+    /       %hr.thin
+    /     #feed  
+    /       - for tweet in @tweets
+    /         .image= image_tag(tweet.profile_image_url, :size => "36x36") 
+    /         .text= display_content_with_links(tweet.text)
+    /         %hr.thin

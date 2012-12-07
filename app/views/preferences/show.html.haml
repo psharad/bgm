@@ -1,0 +1,23 @@
+<p>
+  <b>Interest:</b>
+  <%=h @preference.interest %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%=h @preference.day %>
+</p>
+
+<p>
+  <b>Availability:</b>
+  <%=h @preference.availability %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @preference.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_preference_path(@preference) %> |
+<%= link_to 'Back', preferences_path %>

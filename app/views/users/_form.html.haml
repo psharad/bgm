@@ -1,0 +1,39 @@
+.instruct All fields are required
+%br.clear
+- form_for @user, :html => {:id => 'edit_user'} do |f|
+  //= error_messages_for :user, :header_message => "Error:", :message => ""
+
+  = hidden_field_tag :clicked, 'next'
+  .cred
+    .field-label Email
+    = f.text_field :email, :class => 'required text_field'
+      
+  .cred
+    .field-label Enter New Password
+    = f.password_field :password, :class => 'required text_field'
+
+  .cred
+    .field-label Confirm New Password
+    = f.password_field :password_confirmation, :class => 'required text_field'
+    
+  .cred
+    .field-label Sex
+    = f.select :sex, ['Male', 'Female'], {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    .field-label Age
+    = f.select :age, 18..99, {:prompt => 'Select'}, {:class => 'required'}
+
+  .cred
+    - if !self.action_name == 'edit'  
+      = link_to '&laquo; Back', edit_group_path(session[:group]), :class => 'back_button', :id => 'back'
+    - if self.action_name == 'edit' || self.action_name == 'update'
+      - if params[:sk]
+        = f.submit 'Save', :id => 'update', :disabled => true, :name => "lf"
+      - else
+        = f.submit 'Save', :id => 'update', :disabled => true
+    - else
+      = f.submit 'Add Member to my Group &raquo;', :id => 'add', :disabled => true
+    / %br.clear
+  / %br.clear
+  / %br.clear

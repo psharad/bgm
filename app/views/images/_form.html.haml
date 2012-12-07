@@ -1,0 +1,11 @@
+- form_for @image, :html => { :multipart => true } do |f|
+  = f.error_messages 
+  .cred
+    .field-label You can upload a JPG, GIF or PNG file (File limit is 5MB).
+    = f.file_field :image
+  .cred
+    .field-label Description
+    = f.text_area :description
+  .cred
+    = f.submit (self.action_name == 'edit' || self.action_name == 'update' ? 'Save' : 'Upload')
+    = link_to 'Back', images_url, :class => 'black-button'

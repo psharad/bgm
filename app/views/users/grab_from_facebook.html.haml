@@ -1,0 +1,34 @@
+%tr
+  %td{:align => "center", :style => "padding: 20px 0px;"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "759"}
+      %tr
+        %td{:background => "/images/main/content_bg_word.png", :height => "423", :style => "background-repeat:no-repeat;", :valign => "top", :width => "417"}
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td{:height => "15"}
+            %tr
+              %td{:align => "left"}
+                - if @fb_logged_in
+                  You are currently logged in to Facebook as:
+                  = image_tag(graph_picture(@fb.id, "square"))
+                  = @fb.name
+                %br
+            %tr
+              %td{:height => "35"}
+            %tr
+              %td{:align => "left"}
+                = link_to image_tag("login-button.png", :border => "0"), fb_connect_link,:style=>"margin-left:40px;"
+            %tr
+              %td{:height => "35"}
+            %tr
+              %td{:align => "left"}
+                - if @fb_logged_in
+                  = link_to "Not you?", "#", :id => "logout_facebook"
+            %tr
+              %td{:height => ""}
+            %tr
+              %td{:align => "left"}
+                = button_to "Cancel", group_upload_photo_url,:style=>"margin-left:40px;"
+
+
+

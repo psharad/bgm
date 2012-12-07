@@ -1,0 +1,122 @@
+#admin_bg {
+  background: url(/images/main/main_bg.png) no-repeat top center; }
+
+#admin {
+  margin: 0 0 0 20%;
+  color: white; }
+  #admin input[type="text"], #admin input[type="password"] {
+    border: 1px solid #646d7e;
+    width: 330px; }
+  #admin .cred {
+    padding-bottom: 10px;
+    text-transform: uppercase; }
+  #admin .field-label {
+    padding: 3px 0;
+    text-transform: uppercase; }
+
+#admin_spacer {
+  height: 140px; }
+
+#username {
+  color: white;
+  position: relative;
+  top: 110px;
+  left: 480px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right; }
+
+#post {
+  background: white;
+  color: black;
+  padding-left: 20px; }
+  #post input[type="text"], #post input[type="password"] {
+    border: 1px solid #646d7e;
+    width: 330px; }
+  #post textarea {
+    border: 1px solid #646d7e;
+    width: 300px;
+    resize: none; }
+  #post .cred {
+    padding-bottom: 10px;
+    text-transform: uppercase; }
+  #post .field-label {
+    padding: 3px 0;
+    text-transform: uppercase; }
+  #post .title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold; }
+  #post .image_preview {
+    position: relative;
+    left: 200px;
+    top: -55px; }
+  #post .view {
+    position: relative;
+    left: 50px; }
+
+#admin_content {
+  background: white;
+  height: 700px;
+  color: black; }
+  #admin_content .pagination a {
+    color: black; }
+
+#crop_area {
+  text-align: center; }
+  #crop_area .jcrop-holder {
+    margin: auto; }
+
+#left {
+  background: white;
+  font-size: 14px;
+  padding: 20px;
+  width: 650px; }
+  #left .images, #left .post, #left .dashboard {
+    border: 1px solid #737ca1;
+    border-spacing: 0px;
+    line-height: 25px;
+    width: 650px; }
+    #left .images .filename, #left .post .filename, #left .dashboard .filename {
+      width: 340px;
+      text-align: center; }
+    #left .images .date, #left .post .date, #left .dashboard .date {
+      width: 100px;
+      text-align: center; }
+    #left .images .title, #left .post .title, #left .dashboard .title {
+      width: 350px;
+      overflow: hidden;
+      white-space: nowrap; }
+    #left .images .view, #left .post .view, #left .dashboard .view {
+      width: 100px; }
+    #left .images .desc, #left .post .desc, #left .dashboard .desc {
+      width: 400px; }
+    #left .images .action, #left .post .action, #left .dashboard .action {
+      width: 200px;
+      text-align: center; }
+
+#right {
+  background: white;
+  padding: 20px 10px;
+  width: 230px;
+  height: 650px;
+  text-align: center; }
+
+#archive ul li {
+  padding: 0 0 5px 0;
+  text-align: left; }
+#archive a {
+  color: black;
+  text-decoration: none; }
+#archive a:hover {
+  text-decoration: underline; }
+
+.odd td {
+  background-color: #c2dfff; }
+
+.even td {
+  background-color: white; }
+
+.post_image {
+  text-align: center; }

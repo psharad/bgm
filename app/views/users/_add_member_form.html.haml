@@ -1,0 +1,34 @@
+- form_tag({:action => :create_member}, :html => {:method => :get}) do
+  .error
+  
+  = image_tag 'ajax-loader.gif', {:id => 'pop_loader', :style => "display:none;"}
+  .cred
+    .field-label Email
+    = text_field_tag "member[#{@member_count}][email]", @member.email, :class => 'required text_field', :id => "member_email"
+
+  .photo_sex_age_wrapper
+    .photo
+      = image_tag(graph_picture(@fb_id), :height => 100)
+  
+    .age_sex
+      .field-label.cred{:style => 'margin:0'} Sex
+      = select_tag "member[#{@member_count}][sex]", options_for_select(['Male', 'Female'],FacebookInfo.get_gender(@member.sex, 'member')), {:class => 'required fb_select', :id => "member_sex"}
+      %br
+      .field-label.cred{:style => 'margin:0'} Age
+      - age = FacebookInfo.get_age(@member.birthday,'member')
+      = select_tag "member[#{@member_count}][age]", options_for_select(list_size_group('age'), age), {:class => 'required fb_select', :id => "member_age"}
+  
+  =# image_tag 'local_offer_spacer.png', :height => '115', :width => '1'
+  = hidden_field_tag "fb_ids[#{@member_count}][fbid]", @fb_id
+  = hidden_field_tag 'memcount', @member_count
+  = hidden_field_tag 'from_facebook', true
+  
+  %br
+  %br
+  - if (@sp.group['size'].to_i - 1) == (@member_count + 1)
+    = submit_tag 'No more members', :id => 'no_more_member_submit', :disabled => true, :class => 'disabled'
+  - else
+    = submit_tag 'Continue', :id => 'member_submit', :disabled => true, :class => 'disabled'
+  %br
+  %br
+  = submit_tag 'Back', :id => 'back_member_submit'

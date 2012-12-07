@@ -1,0 +1,12 @@
+/* CSS Document */
+
+body	{margin:0px; padding:0px;}
+.text	{font-family:Arial; font-size:17px; color:#9C9C9D; line-height:25px;}
+.text1	{font-family:Arial; font-size:20px; color:#381852;}
+.text2	{font-family:Arial; font-size:12px; color:#555555;}
+.text3	{font-family:Arial; font-size:14px; color:#381852; font-weight:bold;}
+.input	{font-family:Arial; font-size:17px; color:#FFFFFF;}
+.head	{font-family:Arial; font-size:20px; color:#381852; text-transform:uppercase; font-weight:bold;}
+.artical	{font-family:Arial; font-size:13px; color:#555555; line-height:20px;}
+.artical	a{font-family:Arial; font-size:13px; color:#555555; text-decoration:none; line-height:20px;}
+.artical	a:hover{font-family:Arial; font-size:13px; color:#555555; text-decoration:underline;  line-height:20px;}

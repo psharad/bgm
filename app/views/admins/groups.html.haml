@@ -1,0 +1,16 @@
+%h2 Groups
+%table.list
+  %tr
+    %th Group Name
+    %th User Email
+    %th
+  - for group in @groups
+    %tr{:class => cycle('odd', 'even')}
+      %td= group.name
+      %td= group.user.email rescue ""
+      - if group.is_deactivated?
+        %td Deactivated
+      - else
+        %td= link_to 'Deactivate', deactivate_admins_url(:group_id => group.id)
+
+= will_paginate(@groups)

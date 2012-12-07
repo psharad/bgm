@@ -1,0 +1,7 @@
+#content
+  .title Account
+  .notice= clear_notice(notice)
+  - if @user.nil?
+    = render :partial => 'notfound'
+  - else
+    = render :partial => 'form'

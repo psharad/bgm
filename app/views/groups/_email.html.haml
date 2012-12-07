@@ -1,0 +1,30 @@
+#content
+  .title Email #{@group.name}
+
+  .containter
+    / .right{:style => "width: 20%; float: right"}
+    /   / .row
+    /   /   .field
+    /   /     Ads here
+    .left{:style => "width: 100%;"}
+      - form_for :email, :url => mail_sent_groups_url do |f|
+        = f.hidden_field :group_id, :value => @group.id
+        / .row
+        /   To:
+        /   .field
+        /     = f.text_field :leader_email, :value => (@group.user.email rescue nil), :readonly => true
+        / .row
+        /   From:
+        /   .field
+        /     = f.text_field :sender_email, :value => (current_user ? current_user.email : nil)
+        .cred
+          %br
+          .instruct Type your message here.
+          %br
+          = f.text_area :message, :style => "width: 100%"
+        .cred
+          = f.submit "Send", :class => 'submit_button'
+          %br
+          %br
+          = link_to "Back", group_url(@group, params.stringify_keys.reject {|k,v| %(controller action authenticity_token).include?(k)}), :class => 'black-button'
+        %br.clear

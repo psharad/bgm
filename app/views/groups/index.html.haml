@@ -1,0 +1,12 @@
+%ul.list
+  - @groups.each do |group|
+    %li
+      = "#{group.name} - created #{time_ago_in_words(group.created_at)} ago"
+      %br
+      = link_to 'Show', group
+      &mdash;
+      = link_to 'Edit', edit_group_path(group)
+      &mdash;
+      = link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete
+
+= link_to 'New group', new_group_path

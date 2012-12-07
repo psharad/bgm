@@ -1,0 +1,67 @@
+%tr
+  %td{:align => "center", :style => "padding: 20px 0px;"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "759"}
+      %tr
+        %td{:background => "/images/main/content_bg_word.png", :height => "423", :style => "background-repeat:no-repeat;", :valign => "top", :width => "417"}
+     
+
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td{:width => "10"}  
+              %td
+                %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                  %tr
+                    %td{:height => "35"}  
+                  - if @fb_photo
+                    %tr
+                      %td{:align => "left"}
+                        = image_tag @fb_photo, :alt => 'group photo', :size => "100x100", :disabled => false,:style=>"margin-left:10px;"
+                  - elsif @photo.photo_file_name.nil?
+                    %tr
+                      %td
+                        Upload your photo.
+                  - else
+                    %tr
+                      %td
+                        = image_tag @photo.photo.url(:small), :alt => 'group photo', :disabled => false,:style=>"width:120px;height:70px;margin-left:0px;"
+                  %tr
+                    %td{:height => "20"}  
+                  %tr
+                    %td
+                      - form_tag({:action => :save_group_photo}, :multipart => true) do
+                        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                          %tr
+                            %td{:height => "20"}  
+                          %tr
+                            %td{:style=>'padding:10px 0px 0px 9px'}
+                              = link_to image_tag("/images/grab.jpg"), grab_from_facebook_url, :style=>"width:120px;height:70px;margin-left:0px;"
+                          - if !mobile_device?
+                            %tr
+                              %td{:style=>'padding:10px 0px 0px 9px'}
+                                Select an image on your computer. 
+                            %tr
+                              %td
+                                = file_field_tag 'g_image[photo]',:size=>39, :class => 'fieldHolder required', :style => "border:none; width:380px; height:30px; background:none;overflow:hidden"
+                            %tr
+                              %td{:style=>'padding-top:7px;'}
+                                = image_submit_tag("/images/upload-b.jpg", :id => 'upload_photo_submit', :disabled => true, :style=>'margin-left:282px;')
+                          - else
+                            If you don't have a Facebook account tap 'next' to complete the registration then add a photo from your PC.
+                  %tr
+                    %td{:height => "20"}  
+                  %tr
+                    %td
+                      %table{:style => "margin-left:40px;"}
+                        %tr
+                          %td= button_to 'Back', group_preferences_url, :id => 'next'
+                          %td= button_to 'Next', finish_registration_users_url
+                  %tr
+                    %td
+                      
+
+
+
+
+
+
+

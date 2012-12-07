@@ -1,0 +1,75 @@
+#content
+  .title Member Profile
+  .notice= clear_notice(notice)
+  %br
+  - unless params[:sk]
+    - form_tag edit_check_members_url, :method => :get do
+      .cred
+        .field-label Choose a member to be edited:
+        = select_tag :id, options_for_select([['Select', '']] + current_user.groups.current_group.members.all.collect {|p| [ p.email, p.id ]}), :onchange => "submit();"
+  %br
+  - form_for ([@group, @member]) do |f|
+    .cred
+      .field-label Email
+      .normal= @member.email
+
+    .cred
+      .field-label Sex
+      .normal= @member.sex
+
+    .cred
+      .field-label Age
+      = f.select :age, 18..99, {:prompt => 'Select'}, {:class => 'required'}
+  
+    / .cred
+    /   .field-label Height
+    /   = f.select :height_id, Height.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    / 
+    / .cred
+    /   .field-label Build
+    /   = f.select :built_id, Built.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    /   
+    / .cred
+    /   .field-label Ethnicity
+    /   = f.select :ethnicity_id, Ethnicity.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    /    
+    / .cred
+    /   .field-label Education
+    /   = f.select :education_id, Education.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    /   
+    / .cred
+    /   Currently in College?
+    /   %br
+    /   = f.radio_button :in_college, true
+    /   Yes
+    /   = f.radio_button :in_college, false
+    /   No
+    / 
+    / .cred
+    /   .field-label Occupation
+    /   = f.select :occupation_id, Occupation.all.collect {|p| [ p.text, p.id ] }, {:prompt => 'Select'}, {:class => 'required'}
+    /   %br.clear
+
+    .cred
+      SAVE THIS MEMBER TO MY HISTORY&nbsp;
+      = f.check_box :in_history
+      %br.clear
+      
+    - unless params[:sk]
+      = f.submit 'Save', :class => 'submit_button'
+      %br
+      %br
+      = link_to 'Back', edit_group_path(current_user.groups.current_group), :class => 'black-button', :style => 'padding: 10px 72px'
+      %br.clear
+    - else
+      = f.submit 'Save', :class => 'submit_button', :name => "lf"
+  - unless params[:sk]
+  
+    %br
+    %br
+    %br
+  
+    .cred= link_to 'Add Member', add_members_url, :class => 'black-button', :style => 'padding: 10px 52px'
+    %br
+    .cred= link_to 'Remove Member', remove_group_url(current_user.groups.current_group), :class => 'black-button', :style => 'padding: 10px 42px'
+#spacer

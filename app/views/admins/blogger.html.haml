@@ -1,0 +1,17 @@
+%h2 Bloggers
+- if @admin.blank?
+  %h1 Sorry, there are no entries.
+- else
+  %table.list
+    %tr
+      %th Name
+      %th Username
+      %th Password
+      %th Action
+    - for blogger in @admin
+      %tr{:class => cycle('odd', 'even')}
+        %td= blogger.name
+        %td= blogger.username
+        %td= blogger.save_password
+        %td.action
+          = link_to "Edit", edit_admin_path(blogger)

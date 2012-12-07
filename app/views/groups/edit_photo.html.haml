@@ -1,0 +1,25 @@
+#content
+  .title Photo Preview 
+  .upload_photo  
+    .cred
+      %br.clear
+      = photo_display(@group)
+      %br.clear
+      %br.clear
+    - form_for @group, :url => save_edit_photo_group_url(@group), :html => {:multipart => true} do |f|
+      .cred
+        = link_to 'Grab from Facebook', choose_album_group_url(:f => "pic"), :class => 'black-button', :style => "padding: 10px 33px"
+  
+      - if !mobile_device? 
+        .cred
+          .field-label Select an image on your computer.
+          = f.file_field :photo, {:class => 'required'}
+        %br.clear
+        .cred
+          = f.submit 'Upload', :id => 'update', :disabled => true
+      - else
+        .cred
+          .field-label If you don't have a Facebook account, add a photo from your PC.
+      %br.clear
+      .cred
+        .cred= link_to 'Done', edit_group_path(current_user.groups.current_group), :class => 'black-button'

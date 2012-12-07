@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  interest: MyString
+  day: MyString
+  availability: MyString
+  description: MyString
+
+two:
+  interest: MyString
+  day: MyString
+  availability: MyString
+  description: MyString

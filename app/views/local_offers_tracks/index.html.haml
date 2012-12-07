@@ -1,0 +1,53 @@
+%h2 Local Offers Tracking
+
+%br
+
+- form_for :search, :url => local_offers_tracks_url, :html => {:method => :get}  do |f|
+  = f.label :local_offer_title_like, 'Local Offer'
+  = f.text_field :local_offer_title_like
+  %br
+  %br
+  = f.label :email_like, 'Email'
+  = f.text_field :email_like
+  %br
+  %br
+  = f.label :created_at_gte, 'Date from'
+  = f.date_select :created_at_gte, :size => 12
+  / = f.hidden_field 'created_at_lte(4i)', :value => '23'
+  / = f.hidden_field 'created_at_lte(5i)', :value => '59'
+  = f.label :created_at_lte, 'Date to'
+  = f.date_select :created_at_lte, :size => 12
+  / = f.hidden_field 'created_at_gte(4i)', :value => '00'
+  / = f.hidden_field 'created_at_gte(5i)', :value => '00'
+
+  %br
+  %br
+  = f.submit 'Search'
+
+/ %p
+/   %div.sort_by
+/     Sort by:
+/     \#{order @search, :by => :local_offer_title, :as => 'Local Offer'} |
+/   %div.sort_by
+/     \#{order @search, :by => :email} |
+/   %div.sort_by
+/     \#{order @search, :by => :created_at}
+
+%br
+%br
+- unless @results.empty?
+  %table.list
+    %tr
+      %th Title
+      %th Email
+      %th Date Created
+      /%th Action
+    - for local_offers_track in @results
+      %tr{:class => cycle('odd', 'even')}
+        %td= local_offers_track.local_offer.title rescue ""
+        %td= local_offers_track.email
+        %td= local_offers_track.created_at
+        /%td.action
+        /= link_to "Delete", local_offer, :confirm => 'Are you sure?', :method => :delete
+
+  = will_paginate(@results)

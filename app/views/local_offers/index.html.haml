@@ -1,0 +1,19 @@
+%h2 Local Offers
+
+= link_to "Create New Local Offer", new_local_offer_url, :class => 'black-button'
+
+%br
+%br
+
+%table.list
+  %tr
+    %th Title
+    %th Action
+  - for local_offer in @local_offers
+    %tr{:class => cycle('odd', 'even')}
+      %td= local_offer.title
+      %td.action
+        = link_to "Edit", edit_local_offer_path(local_offer)
+        = link_to "Delete", local_offer, :confirm => 'Are you sure?', :method => :delete
+
+= will_paginate(@local_offers)

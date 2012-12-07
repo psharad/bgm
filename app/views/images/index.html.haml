@@ -1,0 +1,22 @@
+%h2 Images
+
+= link_to 'Upload Image', new_image_url, :class => 'black-button'
+  
+- if @images.blank?
+  %h1 Sorry, there are no available images.
+- else
+  %table.list
+    %tr
+      %th Filename
+      %th View
+      %th Description
+      %th{:colspan => 2} Options
+    - for image in @images
+      %tr{:class => cycle('odd', 'even')}
+        %td= image.image_file_name
+        %td.img= link_to image_tag(image.image.url(:small)), image.image.url(:large), :rel => 'image'
+        %td= image.description
+        %td
+          = link_to "Edit", edit_image_path(image)
+          = link_to "Delete", image, :confirm => 'Are you sure?', :method => :delete
+  = will_paginate(@images)
