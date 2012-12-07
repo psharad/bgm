@@ -4,7 +4,7 @@ set :keep_releases, 5
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :repository,  "git@github.com:sourcepad/bgm.git"
+set :repository,  "git@github.com:psharad/bgm.git"
 set :branch, "master"
 # set :repository_cache, "git_cache"
 # set :deploy_via, :remote_cache
